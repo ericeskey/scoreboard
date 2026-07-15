@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>The Scoreboard Question · Dark Horse Works</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#F2F0EB;color:#0A0A0A;font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  *,*::before,*::after{box-sizing:border-box;}
+  button{font-family:inherit;cursor:pointer;}
+  textarea,input{font-family:inherit;}
+  a{color:#0A0A0A;}
+  a:hover{color:#0A0A0A;}
+  ::selection{background:#0A0A0A;color:#F2F0EB;}
+  .flg .fl1{display:none;}
+  .flg[data-flagged="true"] .fl1{display:inline;}
+  .flg[data-flagged="true"] .fl0{display:none;}
+  .flg[data-flagged="true"]{color:#D64A1F !important;text-decoration:none !important;}
+  [data-flagmode="off"] .flg:not([data-flagged="true"]){display:none;}
+  @keyframes fadeRise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+  @media print{
+    @page{size:letter;margin:0.7in;}
+    [data-print="hide"]{display:none !important;}
+    html,body{background:#fff !important;}
+  }
+</style>
+</helmet>
+
+<div data-screen-label="The Scoreboard Question" style="min-height:100vh;background:#F2F0EB;">
+
+  <!-- masthead rule -->
+  <div data-print="hide" style="height:3px;background:#0A0A0A;width:100%;"></div>
+
+  <!-- NAV -->
+  <header data-print="hide" style="position:sticky;top:0;z-index:50;background:#F2F0EB;border-bottom:1px solid #C8C4BB;">
+    <div style="max-width:1180px;margin:0 auto;padding:14px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <button onClick="{{ goEngage }}" style="background:none;border:none;padding:0;text-align:left;display:flex;flex-direction:column;gap:3px;">
+        <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;color:#0A0A0A;">DARK HORSE WORKS</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;">The scoreboard question</span>
+      </button>
+      <nav style="display:flex;align-items:stretch;gap:4px;flex-wrap:wrap;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+          <button onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="{{ n.hoverStyle }}">
+            <span style="{{ n.numStyle }}">{{ n.num }}</span>
+            <span style="font-size:14px;font-weight:500;">{{ n.label }}</span>
+          </button>
+        </sc-for>
+      </nav>
+      <button onClick="{{ goCases }}" style="{{ casesLinkStyle }}" style-hover="{{ ghostHoverG }}">Case room</button>
+    </div>
+    <div style="height:2px;background:#E6E3DC;width:100%;">
+      <div style="height:2px;background:#D64A1F;width:{{ progressPct }};transition:width 300ms cubic-bezier(0.2,0.8,0.2,1);"></div>
+    </div>
+  </header>
+
+  <!-- ================= ENGAGE ================= -->
+  <sc-if value="{{ flags.engage }}" hint-placeholder-val="{{ true }}">
+    <main data-screen-label="Engage" style="max-width:1180px;margin:0 auto;padding:clamp(48px,8vh,96px) clamp(20px,5vw,72px) 96px;">
+      <div style="max-width:62ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Dark Horse Works · for Matt Becker</span>
+        <h1 style="font-size:clamp(40px,6vw,64px);font-weight:900;line-height:1.0;letter-spacing:-0.035em;margin:24px 0 0;text-wrap:balance;">Two essays, written for you.</h1>
+        <p style="font-size:19px;line-height:1.55;color:#4A4A4A;margin:32px 0 0;max-width:62ch;">Your question from July 14 kept working on us: <em>how do we measure success?</em> The answer came out as two essays. An essay is the one form you can hand upward, to a leader who doesn’t know what to look for in this space. You are reading them before anyone else.</p>
+      </div>
+
+      <div style="margin-top:64px;border-top:1px solid #0A0A0A;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;max-width:980px;">
+        <div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#6B6862;">How this site works</span>
+        </div>
+        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:0;max-width:60ch;">A short readback comes first: eight cards on what we heard, each one yours to affirm or correct, each one expandable if you want the fuller context. Then a short bridge into the essays. Off the spine sits a <a href="#cases" onClick="{{ goCasesLink }}" style="color:#0A0A0A;text-decoration:underline;text-underline-offset:3px;">case room</a>, eight precedents behind the essays’ argument, each graded, each flaggable, with the full research file beneath it. At the end: a standing offer, and the record.</p>
+      </div>
+
+      <div style="margin-top:48px;border-left:3px solid #0A0A0A;padding:4px 0 4px 24px;max-width:62ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Yours to keep</span>
+        <p style="font-family:'Instrument Serif',Georgia,serif;font-size:21px;line-height:1.4;color:#0A0A0A;margin:10px 0 0;">The essays and the research behind them are yours to keep. If any of it is worth a conversation, you know where I am.</p>
+      </div>
+
+      <div style="margin-top:48px;">
+        <button onClick="{{ goListen }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:16px 28px;font-size:16px;font-weight:500;letter-spacing:-0.01em;" style-hover="{{ btnDarkHover }}">Continue from what we heard</button>
+      </div>
+
+      <div style="margin-top:96px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;gap:32px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:#6B6862;">
+        <span>Listen</span><span style="color:#C8C4BB;">→</span><span>Bridge</span><span style="color:#C8C4BB;">→</span><span>Essay I</span><span style="color:#C8C4BB;">→</span><span>Essay II</span><span style="color:#C8C4BB;">→</span><span>Close</span>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= LISTEN ================= -->
+  <sc-if value="{{ flags.listen }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Listen" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:24px;">
+        <div style="max-width:62ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Listen · the second lock</span>
+          <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;">The problem you brought dissolved in the room. The one underneath it didn’t.</h2>
+          <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:64ch;">The email that started this was about twenty hours a month of manual data compilation. By the time we talked you had already broken the back of it yourself, with Power Query and a colleague who can automate the rest, and you named the shift before we could: <em>“maybe our conversation should evolve from a pure data compilation to where I actually think you might be able to help me a little differently.”</em> Everything below is from after that pivot. Affirm what still lands, correct what doesn’t, and add what we missed at the end. Every card expands.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0A0A0A;">{{ listenProgress }}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;margin-top:4px;">reviewed</div>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
+          <sc-for list="{{ listenRail }}" as="r" hint-placeholder-count="8">
+            <button onClick="{{ r.onClick }}" style="{{ r.style }}"></button>
+          </sc-for>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:#6B6862;">{{ listenStepLabel }}</span>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-left:auto;">
+          <sc-for list="{{ listenFilters }}" as="f" hint-placeholder-count="3">
+            <button onClick="{{ f.onClick }}" style="{{ f.style }}" style-hover="{{ f.hoverStyle }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <article style="margin-top:24px;max-width:800px;min-height:300px;border-top:1px solid #0A0A0A;padding:28px 0 0 24px;border-left:3px solid {{ listenCurrent.railColor }};">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:40px;letter-spacing:-0.03em;line-height:1;color:{{ listenCurrent.numColor }};">{{ listenCurrent.num }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:{{ listenCurrent.tagColor }};">{{ listenCurrent.tag }}</span>
+        </div>
+        <h3 style="font-size:clamp(26px,3.4vw,34px);font-weight:700;line-height:1.12;letter-spacing:-0.02em;margin:18px 0 0;max-width:26ch;">{{ listenCurrent.headline }}</h3>
+
+        <sc-if value="{{ listenCurrent.editing }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;max-width:62ch;">
+            <textarea value="{{ editDraft }}" onChange="{{ onEditChange }}" rows="5" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:12px;font-size:16px;line-height:1.55;color:#0A0A0A;resize:vertical;"></textarea>
+            <div style="display:flex;gap:8px;">
+              <button onClick="{{ onSaveCorrection }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:8px 16px;font-size:13px;">Save correction</button>
+              <button onClick="{{ onCancelEdit }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:8px 16px;font-size:13px;">Cancel</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ lfCorrected }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:18px 0 0;max-width:60ch;">{{ listenCurrent.correction }}</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:10px 0 0;">Your correction · on the record</p>
+        </sc-if>
+
+        <sc-if value="{{ lf1 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Two weeks of doing month-end yourself solved most of what your first email described. It cleared the way for the real conversation.</p></sc-if>
+        <sc-if value="{{ lf2 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;"><em>“Where I think I need the real help is around the scoreboard. How do we measure success?”</em> You asked it twice. Everything past this card is our answer.</p></sc-if>
+        <sc-if value="{{ lf3 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">The portfolio’s only measure has ever been counts: in, out, approved, active, cancelled. Your own BU leaders reject them: <em>“I got one project that’s this big and another that’s ginormous and you’re counting them exactly the same.”</em> You agree with them.</p></sc-if>
+        <sc-if value="{{ lf4 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Revenue attribution for sustaining work is, in your experience, painfully difficult to obtain. When you pushed operations finance to price line-downs and back-orders, they got, in your word, jumpy.</p></sc-if>
+        <sc-if value="{{ lf5 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Business units read the portfolio in revenue. Global supply chain reads it in continuity. You watched the same line-down land as an emergency on one side of the house and as routine on the other.</p></sc-if>
+        <sc-if value="{{ lf6 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Asked whether pausing the report-out caused any business impact, every BU leader said no. You also told us how shortages actually get handled: the item comes out of the kit, the customer is told, the order ships.</p></sc-if>
+        <sc-if value="{{ lf7 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Two and a half years of monthly report-outs. Paused at the end of the year. Six months on, no one has asked where it went, and you’re left with the honest question: <em>do we even need it?</em></p></sc-if>
+        <sc-if value="{{ lf8 }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">Your leaders, in your words, “don’t know what they don’t know in this space.” They can’t tell you what the scoreboard should show, and everyone agrees the counts aren’t it.</p></sc-if>
+        <sc-if value="{{ lfAdded }}" hint-placeholder-val="{{ false }}"><p style="font-size:18px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:60ch;">{{ listenCurrent.face }}</p></sc-if>
+
+        <sc-if value="{{ lx1 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">You did the crunch in two days, found that Power Query “is my friend,” and learned your Power BI colleague can automate the rest. We count that problem as closed. This card keeps it on the record.</p></sc-if>
+        <sc-if value="{{ lx2 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">You asked it twice, unprompted both times. You did not ask for a better dashboard, a cleaner dataset, or a faster refresh. You asked what success means. The essays take that question on.</p></sc-if>
+        <sc-if value="{{ lx3 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">In three years, no one up to the VPs of R&amp;D has produced anything better. The counts date to a former president of the business, who invented them because there was nothing else at hand. That says nothing about you. Essay I makes the case that the number was never there to find.</p></sc-if>
+        <sc-if value="{{ lx4 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">We read the jumpiness as honesty rather than stonewalling. The value of prevented trouble is a counterfactual, and finance is right to be nervous about putting dollar signs on events that never happened. The practical consequence: the scoreboard cannot wait on financial data. Essay II starts from exactly this wall. One partial workaround exists; see “The hidden factory” in the <a href="#cases" onClick="{{ goCasesLink }}" style="color:#6B6862;text-decoration:underline;text-underline-offset:3px;">case room</a>.</p></sc-if>
+        <sc-if value="{{ lx5 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">The supply-chain playbook for a line-down (cross-train the operators, move them, send them home) is exactly why the event barely registers there, while the BU that sells the product watches revenue and commitments wobble. Our read: this is the deeper reason no proposed measure has ever stuck. Any single number is written in one side’s language, and the other side has no reason to trust it. Essay II is about what to build instead.</p></sc-if>
+        <sc-if value="{{ lx6 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">Add the cross-training around line-downs and a pattern shows: your organization copes well enough locally that impacts stop being visible before anyone upstream can count them. The “no impact” answers are honest and incomplete at once. The cost lands somewhere, in goodwill, slack, and accumulated risk, just never on a report. Essay I takes this from observation to warning, with the most expensive precedent on record.</p></sc-if>
+        <sc-if value="{{ lx7 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">Two years ago this portfolio was, in your words, job number one; a corporate VP was alarmed enough about project volume to make it so. Since the split was announced: crickets, again your word. We’d add one thing to the record. A report can go unmissed because the work doesn’t matter, or because the report never told leaders anything they couldn’t already feel. The essays argue the second, and that the second is fixable.</p></sc-if>
+        <sc-if value="{{ lx8 }}" hint-placeholder-val="{{ false }}"><p style="font-size:16px;line-height:1.6;color:#6B6862;margin:18px 0 0;max-width:60ch;border-left:2px solid #C8C4BB;padding-left:18px;">This changes where the answer has to come from. Ask leaders what they want on a dashboard and you get the counts back, because counts are what people invent when there is nothing else. The workable direction is the reverse: start from the decisions leaders already make (where to put people, what to fund, what to escalate) and build backward to the smallest instrument that serves them. Both essays work in that direction.</p></sc-if>
+
+        <sc-if value="{{ listenCurrent.hasDetail }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ listenCurrent.onToggleDetail }}" style="background:none;border:none;padding:0;margin-top:16px;display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#D64A1F;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">{{ listenCurrent.expandLabel }}</button>
+        </sc-if>
+
+        <div style="display:flex;align-items:center;gap:12px;margin-top:24px;padding-top:18px;border-top:1px solid #E6E3DC;flex-wrap:wrap;">
+          <button onClick="{{ listenCurrent.onAffirm }}" style="{{ listenCurrent.affirmStyle }}" style-hover="{{ listenCurrent.affirmHover }}">{{ listenCurrent.affirmLabel }}</button>
+          <button onClick="{{ listenCurrent.onNotQuite }}" style="{{ listenCurrent.notQuiteStyle }}" style-hover="{{ listenCurrent.notQuiteHover }}">{{ listenCurrent.notQuiteLabel }}</button>
+          <button onClick="{{ listenCurrent.onSkip }}" style="{{ listenCurrent.skipStyle }}" style-hover="{{ ghostHover }}">{{ listenCurrent.skipLabel }}</button>
+        </div>
+      </article>
+
+      <div style="margin-top:28px;max-width:800px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #C8C4BB;padding-top:20px;">
+        <button onClick="{{ onListenPrev }}" style="{{ listenPrevStyle }}" style-hover="{{ ghostHoverG }}">Previous</button>
+        <button onClick="{{ onListenNext }}" style="{{ listenNextStyle }}" style-hover="{{ btnDarkHover }}">{{ listenNextLabel }}</button>
+      </div>
+
+      <div style="margin-top:48px;border-top:1px solid #C8C4BB;padding-top:32px;max-width:680px;">
+        <p style="font-size:16px;line-height:1.55;color:#0A0A0A;margin:0;">What did we miss, or get wrong? Add it. It becomes part of the record.</p>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <input value="{{ listenAddDraft }}" onChange="{{ onListenAddChange }}" placeholder="Add a point we did not capture" style="flex:1;min-width:240px;border:1px solid #0A0A0A;background:#fff;padding:12px 14px;font-size:15px;color:#0A0A0A;">
+          <button onClick="{{ onListenAdd }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:12px 20px;font-size:14px;">Add card</button>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= BRIDGE ================= -->
+  <sc-if value="{{ flags.bridge }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Bridge" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="border-bottom:1px solid #0A0A0A;padding-bottom:28px;max-width:64ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Bridge · the third lock</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;">The question under the question.</h2>
+        <p style="font-size:17px;line-height:1.62;color:#0A0A0A;margin:18px 0 0;max-width:64ch;">On its face, “how do we measure success?” is a measurement problem, as if the right KPI exists and just hasn’t been found. Underneath it is a relevance problem: a better number nobody looks at changes nothing, and the paused report already ran that experiment. So an answer worth your time has to do two jobs. It has to measure something your leaders can’t get anywhere else and can’t afford to ignore, which points at what’s coming rather than what happened. And it has to survive two audiences who will never share a definition of value, which rules out the single number entirely. One essay for each job.</p>
+      </div>
+
+      <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;max-width:980px;">
+        <article style="border:1px solid #0A0A0A;background:#fff;padding:28px;display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Essay I</span>
+          <p style="font-size:16.5px;line-height:1.6;color:#0A0A0A;margin:14px 0 0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">The Report Nobody Missed.</em> Why work that’s invisible when it succeeds can’t be made to matter by counting it, why a quiet dashboard deserves suspicion, and what the strongest operators measure instead. You’ll recognize the opening; it’s yours.</p>
+          <sc-if value="{{ bx1 }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:15px;line-height:1.6;color:#6B6862;margin:14px 0 0;border-left:2px solid #C8C4BB;padding-left:16px;">One more reason this one belongs to you: when the gloves story came up on our call, you took it over on the spot. <em>“How else can I show 200 gloves on a proper table?”</em> The essay ends with those gloves, and with an honest accounting of what they can and can’t do.</p>
+          </sc-if>
+          <button onClick="{{ onBridgeToggle1 }}" style="background:none;border:none;padding:0;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#D64A1F;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">{{ bt1Label }}</button>
+          <button onClick="{{ goEssay1 }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:13px 22px;font-size:14.5px;font-weight:500;margin-top:22px;" style-hover="{{ btnDarkHover }}">Read Essay I</button>
+        </article>
+        <article style="border:1px solid #0A0A0A;background:#fff;padding:28px;display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Essay II</span>
+          <p style="font-size:16.5px;line-height:1.6;color:#0A0A0A;margin:14px 0 0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">The Number Nobody Would Accept.</em> Why the dollar figure you’ve been asked for doesn’t exist and wouldn’t settle anything if it did, and how three industries that badly wanted a single number refused it and built something both sides could read instead.</p>
+          <sc-if value="{{ bx2 }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:15px;line-height:1.6;color:#6B6862;margin:14px 0 0;border-left:2px solid #C8C4BB;padding-left:16px;">This is the practical half: what actually goes on the page, the design rules that keep it honest, and how the standoff between revenue-logic and continuity-logic becomes a decidable question instead of a permanent one.</p>
+          </sc-if>
+          <button onClick="{{ onBridgeToggle2 }}" style="background:none;border:none;padding:0;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#D64A1F;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">{{ bt2Label }}</button>
+          <button onClick="{{ goEssay2 }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:13px 22px;font-size:14.5px;font-weight:500;margin-top:22px;" style-hover="{{ btnDarkHover }}">Read Essay II</button>
+        </article>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= ESSAY I ================= -->
+  <sc-if value="{{ flags.essay1 }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Essay I" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="max-width:880px;">
+        <span data-print="hide" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Essay I · the fourth lock</span>
+        <h1 style="font-size:clamp(34px,5vw,52px);font-weight:900;line-height:1.02;letter-spacing:-0.03em;margin:20px 0 0;max-width:20ch;text-wrap:balance;">The Report Nobody Missed</h1>
+        <p style="font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:21px;line-height:1.45;color:#0A0A0A;margin:20px 0 0;max-width:58ch;">You cannot make invisible work matter by counting it. Measure the exposure instead, and tie it to a threshold that forces a decision.</p>
+        <div data-print="hide" style="margin-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:60ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">Contents</span>
+          <a href="#e1s1" data-target="e1s1" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">Invisible when it works</a>
+          <a href="#e1s2" data-target="e1s2" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">The most dangerous sentence in the room</a>
+          <a href="#e1s3" data-target="e1s3" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">Stop measuring the work. Measure the exposure.</a>
+          <a href="#e1s4" data-target="e1s4" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">The budget that forces the decision</a>
+          <a href="#e1s5" data-target="e1s5" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">What’s on the table next quarter</a>
+        </div>
+        <div data-print="hide" style="margin-top:24px;border-left:3px solid #0A0A0A;padding:2px 0 2px 18px;max-width:60ch;">
+          <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:0;">These essays generalize a real situation: yours. If any detail sits closer than you’d like, flag it. Flagged passages change or die before anything publishes.</p>
+          <button onClick="{{ onFlagMode }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:6px 13px;font-size:12px;margin-top:12px;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;" style-hover="background:rgba(10,10,10,0.04);">{{ flagModeLabel }}</button>
+        </div>
+
+        <div data-flagmode="{{ fm }}" style="border-top:1px solid #0A0A0A;margin-top:28px;">
+          <div data-passage="e1p1" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:26px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Somewhere in a large medical-device company, a monthly report ran for two and a half years. It went to business-unit leaders, shared-service heads, and corporate vice presidents. It summarized the health of more than a thousand projects: the unglamorous, essential work of keeping products that already exist manufacturable, compliant, and on the shelf. Then, at the end of a year, it was paused.</p><button class="flg" data-flag="e1p1" data-flagged="{{ ef.e1p1 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p2" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Nobody noticed.</p><button class="flg" data-flag="e1p2" data-flagged="{{ ef.e1p2 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p3" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">No leader asked where it went. No decision stalled for want of it. Six months later, the man who owned it was left asking the only honest question available: <em>do we even need this?</em> And, beneath it, a quieter one: <em>what have I been doing all this time?</em></p><button class="flg" data-flag="e1p3" data-flagged="{{ ef.e1p3 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p4" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">If that describes something you own, resist the first conclusion. The silence that follows a paused report reads like a verdict on the work. It is a verdict on the measurement. The report vanished without a ripple because it measured the work itself (how much of it, moving through the system) when the only thing that could have made it un-pausable was measuring what the work holds back.</p><button class="flg" data-flag="e1p4" data-flagged="{{ ef.e1p4 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e1s1">Invisible when it works</h2>
+          <div data-passage="e1p5" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The work of keeping existing things alive (sustaining engineering, maintenance, reliability, lifecycle management) has a defining and cruel property: <strong>when it succeeds, nothing happens.</strong> No line goes down. No product runs short. Success is the absence of an event, and absence is a terrible thing to put on a dashboard. You cannot photograph the shortage that didn’t occur or invoice the recall you prevented. The better the work, the less there is to show, and non-events do not compete for attention against the launch down the hall with a countdown clock.</p><button class="flg" data-flag="e1p5" data-flagged="{{ ef.e1p5 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p6" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">So the portfolio was reported in the only language its owners had ever managed to produce: counts. Projects opened, closed, approved, active, cancelled. Everyone who saw the numbers knew they were hollow. As one business-unit leader put it: <em>I’ve got one project that’s this big and another that’s ginormous, and you’re counting them exactly the same.</em> The man with the report couldn’t disagree. He had spent three years unable to disagree, and unable to find anything better.</p><button class="flg" data-flag="e1p6" data-flagged="{{ ef.e1p6 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e1s2">The most dangerous sentence in the room</h2>
+          <div data-passage="e1p7" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Ask that company’s leaders whether pausing the report caused any business impact, and they will tell you, function by function, that it did not. No harm. Nothing broke. And they are, in a narrow and dangerous sense, telling the truth.</p><button class="flg" data-flag="e1p7" data-flagged="{{ ef.e1p7 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p8" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Look at how the organization actually copes, and a different picture emerges. When a component runs short, one business unit simply leaves the part out of the kit, tells the customer, and ships. When a line goes down, the operators are cross-trained onto another line or sent home. Each of these is a sensible, local, rational act. And each one erases exactly the signal a health report would need. The impact is real, paid for in customer goodwill, in operational slack, in accumulated risk. It is simply absorbed before it ever reaches a number anyone reports upward.</p><button class="flg" data-flag="e1p8" data-flagged="{{ ef.e1p8 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p9" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><div style="flex:1 1 46ch;max-width:66ch;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">This is the pattern that should keep operators awake:</p><p style="font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:20px;line-height:1.5;color:#0A0A0A;border-left:3px solid #0A0A0A;padding:2px 0 2px 20px;margin:14px 0;">The absence of visible harm is not evidence of health when your organization is competent enough to absorb the harm invisibly.</p><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">The calm surface is manufactured. And the more skilled your people are at coping, the blinder their leaders become, because frontline competence looks exactly like the absence of problems from the top.</p></div><button class="flg" data-flag="e1p9" data-flagged="{{ ef.e1p9 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p10" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Industry has already paid full price for this lesson. In the years before BP’s Texas City refinery exploded in 2005, killing fifteen workers, the company’s personal-injury rates were improving, and leadership read the falling numbers as evidence that safety was under control. The Baker Panel’s verdict afterward was explicit: the improving lagging indicator had produced a false sense of confidence while process risk quietly deteriorated. The numbers were real. They measured the wrong thing.</p><button class="flg" data-flag="e1p10" data-flagged="{{ ef.e1p10 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p11" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">“No issues to report” is the most dangerous sentence in an operations review, because in a competent organization it usually means the issues were absorbed before they reached you. A quiet dashboard is not a safe one.</p><button class="flg" data-flag="e1p11" data-flagged="{{ ef.e1p11 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e1s3">Stop measuring the work. Measure the exposure.</h2>
+          <div data-passage="e1p12" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The turn begins with absolution. Three years of failing to find the right metric was not a failure of effort, intelligence, or tooling. It was a failure of premise: <strong>the number does not exist.</strong> The most accomplished operations in the world (regulated manufacturing, high-reliability engineering, process safety) never found it either. They stopped hunting and changed the category of thing they measure. Not activity, but exposure: not how much work got done, but how much of what leaders actually fear is accumulating beneath them. Risk to safety, risk to supply, reliability being quietly spent, the failure that hasn’t surfaced yet.</p><button class="flg" data-flag="e1p12" data-flagged="{{ ef.e1p12 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p13" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The right comparison for such an instrument is not a better report. It is air-traffic control, which does not earn its keep by counting the planes that landed last month; it earns its keep by seeing the collision coming and clearing the runway. The leader of that device portfolio had described his own organization’s pathology in exactly these terms without recognizing it as the answer: the house is always on fire, everyone rushes to the fire, and the future gets robbed to pay for the present. A portfolio that can show <em>which fires are coming</em>, before they consume the people and budget that would otherwise build the next product, is not a report anyone pauses.</p><button class="flg" data-flag="e1p13" data-flagged="{{ ef.e1p13 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p14" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">What goes on the page is its own discipline, and one warning belongs here: don’t force it into a single number. His business units price value in revenue; his supply chain prices it in continuity; the same line-down is a five-alarm fire to one and a Tuesday to the other, and no scalar will ever satisfy both. The operations that solved this abandoned the universal metric for a small, bounded set of risk domains both sides could read: the pivot that finally made the medical-device industry’s own Case for Quality initiative take hold. But the page, however well designed, is not what re-earns attention. Scorecards become scenery. What re-earns attention is consequence.</p><button class="flg" data-flag="e1p14" data-flagged="{{ ef.e1p14 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e1s4">The budget that forces the decision</h2>
+          <div data-passage="e1p15" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The most elegant consequence mechanism comes from Google’s site-reliability engineers: another population whose best work is invisible and easy to underfund. They govern it with an error budget: a fixed allowance of tolerable failure, agreed in advance. While a service stays within its reliability target, teams ship new features at full speed. The moment the budget is burned, the rule flips automatically: reliability work takes priority until the debt is repaid. Nobody has to win an argument. Nobody has to make anyone care. The threshold makes the decision.</p><button class="flg" data-flag="e1p15" data-flagged="{{ ef.e1p15 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p16" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><div style="flex:1 1 46ch;max-width:66ch;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">Translate that into a sustaining portfolio and you get the instrument that ends the invisibility:</p><p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.5;color:#0A0A0A;border-left:3px solid #0A0A0A;padding:2px 0 2px 20px;margin:14px 0;">A ceiling on unresolved exposure, by product family or business unit, above which discretionary change work pauses until the risk is drawn back down.</p><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">Notice what this sidesteps. It requires no financial attribution that finance cannot produce. It never asks the business units and supply chain to agree on the value of a dollar, only on whether the risk on the table has crossed a line they set together, in advance, when nothing was burning. And notice what it produces: the moment the threshold binds, the portfolio stops requesting attention and starts commanding it. A report can be paused. A constraint cannot.</p></div><button class="flg" data-flag="e1p16" data-flagged="{{ ef.e1p16 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e1s5">What’s on the table next quarter</h2>
+          <div data-passage="e1p17" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">In <em>The Heart of Change</em>, Kotter and Cohen tell the story of Jon Stegner, a purchasing executive who couldn’t get his leadership to care about procurement waste, until he piled all 424 kinds of work gloves the company was buying, each tagged with its price, onto the boardroom table. The executives walked in, asked what the pile was, and authorized the fix on the spot. Waste they had ignored on paper became, in one glance, impossible to un-see.</p><button class="flg" data-flag="e1p17" data-flagged="{{ ef.e1p17 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p18" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">If your portfolio has slipped out of the corporate conversation entirely, you may need a gloves moment: pile up the emergency deviations, the workarounds holding production together, the absorbed strain, and it will win you the room. For an hour. The gloves are the door, not the house. What keeps the room is quieter: in a regulated manufacturer, the forum already exists and is mandatory. Management review can be treated as a reporting obligation, or it can be the place where the exposure thresholds force real choices: what risk to accept, what redesign to fund, what to pause because the budget is spent. Thresholds. Owners. Consequences. That is what makes a report un-pausable.</p><button class="flg" data-flag="e1p18" data-flagged="{{ ef.e1p18 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p19" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The man with the paused report was never short on rigor; he was faithful to a measurement that could not succeed. The silence was information. It was telling him that a portfolio built to prevent invisible harm had been describing itself in the language of visible activity, and that the way out was not a better number but a different question: not <em>how much did we do</em>, but <em>what are we exposed to, and who has to decide about it?</em></p><button class="flg" data-flag="e1p19" data-flagged="{{ ef.e1p19 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e1p20" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Put the gloves on the table tomorrow and you will own the room for an hour. Whether the work matters is decided by what is still on the table next quarter.</p><button class="flg" data-flag="e1p20" data-flagged="{{ ef.e1p20 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+        </div>
+
+        <div data-print="hide" style="margin-top:56px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;justify-content:flex-end;">
+          <button onClick="{{ goEssay2 }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:14px 24px;font-size:15px;font-weight:500;" style-hover="{{ btnDarkHover }}">Continue to Essay II</button>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= ESSAY II ================= -->
+  <sc-if value="{{ flags.essay2 }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Essay II" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="max-width:880px;">
+        <span data-print="hide" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Essay II · the fifth lock</span>
+        <h1 style="font-size:clamp(34px,5vw,52px);font-weight:900;line-height:1.02;letter-spacing:-0.03em;margin:20px 0 0;max-width:20ch;text-wrap:balance;">The Number Nobody Would Accept</h1>
+        <p style="font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:21px;line-height:1.45;color:#0A0A0A;margin:20px 0 0;max-width:58ch;">Two functions price the same portfolio in different currencies. You will never get them to agree on one measure of its value, and the operators who finally solved this stopped trying.</p>
+        <div data-print="hide" style="margin-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:60ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">Contents</span>
+          <a href="#e2s1" data-target="e2s1" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">The universal language that isn’t</a>
+          <a href="#e2s2" data-target="e2s2" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">The fight you can’t win</a>
+          <a href="#e2s3" data-target="e2s3" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">What the best operators did instead</a>
+          <a href="#e2s4" data-target="e2s4" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">What goes on the page</a>
+          <a href="#e2s5" data-target="e2s5" onClick="{{ onTocJump }}" style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.02em;color:#0A0A0A;text-decoration:underline;text-underline-offset:4px;" style-hover="text-decoration-thickness:2px;">The table</a>
+        </div>
+        <div data-print="hide" style="margin-top:24px;border-left:3px solid #0A0A0A;padding:2px 0 2px 18px;max-width:60ch;">
+          <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:0;">These essays generalize a real situation: yours. If any detail sits closer than you’d like, flag it. Flagged passages change or die before anything publishes.</p>
+          <button onClick="{{ onFlagMode }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:6px 13px;font-size:12px;margin-top:12px;font-family:'JetBrains Mono',monospace;letter-spacing:0.04em;" style-hover="background:rgba(10,10,10,0.04);">{{ flagModeLabel }}</button>
+        </div>
+
+        <div data-flagmode="{{ fm }}" style="border-top:1px solid #0A0A0A;margin-top:28px;">
+          <div data-passage="e2p1" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:26px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">A production line goes down in a medical-device plant. To the business unit that sells what the line makes, it is a five-alarm fire: revenue at risk, commitments slipping, customers exposed. To global supply chain, the same event is a Tuesday. Operators are cross-trained onto another line, or moved, or sent home; the disruption is absorbed and the day goes on. Neither side is wrong. The business unit prices the event in revenue. Supply chain prices it in continuity. Same facts, two currencies, and no exchange rate between them.</p><button class="flg" data-flag="e2p1" data-flagged="{{ ef.e2p1 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p2" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Now hand someone a portfolio that serves both functions and ask him to prove its worth. In a large medical-device company, the leader of the sustaining portfolio (more than a thousand projects keeping existing products manufacturable, compliant, and on the shelf) spent three years on exactly that assignment. Every measure he could propose was denominated in one side’s currency. Which made it, to the other side, no measure at all.</p><button class="flg" data-flag="e2p2" data-flagged="{{ ef.e2p2 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e2s1">The universal language that isn’t</h2>
+          <div data-passage="e2p3" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">His first instinct was the reasonable one: financials. Dollars are the one language every executive reads; a credible dollar figure would end the argument. He hit two walls, and the second is the one that matters.</p><button class="flg" data-flag="e2p3" data-flagged="{{ ef.e2p3 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p4" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The first wall: the figure does not exist. Revenue attribution for sustaining work is somewhere between painful and impossible, because the value of the work is the disaster that didn’t happen, and the counterfactual has no invoice. When he pressed operations finance to price line-downs and back-orders, they produced no model. They got, in his word, <em>jumpy</em>. That wasn’t obstruction; it was honesty. They knew any number would be an invention, and inventions with dollar signs have a way of getting treated as facts.</p><button class="flg" data-flag="e2p4" data-flagged="{{ ef.e2p4 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p5" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The second wall is higher: even if the figure existed, half the room would reject it. The disagreement was never about measurement. It is about what value <em>is</em>. Revenue-logic and continuity-logic are not two estimates of the same quantity; they are two different theories of what matters: one asks <em>what are we selling</em>, the other asks <em>what can we withstand</em>. A dollar figure does not bridge those theories. It adjudicates between them, in one side’s currency. That is why every proposed metric arrived dead: not wrong, just foreign.</p><button class="flg" data-flag="e2p5" data-flagged="{{ ef.e2p5 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e2s2">The fight you can’t win</h2>
+          <div data-passage="e2p6" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The reflex at this point is the diligent, rigorous one: escalate the hunt. A composite index, a weighted score, a risk-adjusted dollar. Every composite fails the same way, and it is worth seeing exactly how. The weights <em>are</em> the value judgment. Deciding that a week of backorder exposure “equals” some quantum of revenue is precisely the question the two functions cannot agree on. The composite doesn’t answer that question; it buries it in arithmetic. The fight relocates into the weighting spreadsheet, where it is harder to see and impossible to settle.</p><button class="flg" data-flag="e2p6" data-flagged="{{ ef.e2p6 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p7" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">So here is the absolution: <strong>you were never supposed to win this fight.</strong> The most accomplished regulated operators ran into the same collision and refused to adjudicate it. They stopped asking <em>what is this worth?</em> That question demands a single currency. They started asking <em>what are we exposed to?</em> That one can be answered in several currencies at once, each function keeping its native logic.</p><button class="flg" data-flag="e2p7" data-flagged="{{ ef.e2p7 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e2s3">What the best operators did instead</h2>
+          <div data-passage="e2p8" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Three precedents, from three industries that had every incentive to find the one number and didn’t.</p><button class="flg" data-flag="e2p8" data-flagged="{{ ef.e2p8 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p9" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Roughly a decade ago, the medical-device industry’s own Case for Quality collaboration with FDA set out to define a common set of quality metrics manufacturers could report. The first attempt failed. The template was confusing, the reporting burden heavy, and, most telling, companies chose metrics designed to show the regulator what they thought it wanted to see: measurement as performance, not as management. The initiative recovered only when it surrendered the universal-number ambition for a compact set of domains (safety, effectiveness, reliability, availability) fed by signals the companies already generated. Engagement rose. More was reported, and what was reported finally mattered.</p><button class="flg" data-flag="e2p9" data-flagged="{{ ef.e2p9 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p10" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">Process safety learned the same lesson at the highest price on record. After BP’s Texas City refinery exploded in 2005 (the disaster whose improving injury rates had lulled leadership into false confidence), the industry did not respond with a better single score. It built API 754: a tiered set of indicators running from actual loss-of-containment events at the top down to the weak signals of system strain at the base. The lesson of a catastrophe enabled by one comforting number was a deliberate refusal to govern by one number again.</p><button class="flg" data-flag="e2p10" data-flagged="{{ ef.e2p10 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p11" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">And ISO 55000, the international asset-management standard, encodes the same refusal in its definition of value itself: not a figure to maximize but a balance to be managed, cost against risk against performance. The tension between the currencies isn’t collapsed. It’s institutionalized.</p><button class="flg" data-flag="e2p11" data-flagged="{{ ef.e2p11 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p12" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The pattern across all three: nobody found the number. Everybody <strong>bounded the domains.</strong> Bounded is the operative word: small enough to govern, four or five rather than forty, each domain legible to every function, each fed by signals already in the operation, each with an owner and a threshold. A bounded set does what no scalar can: it lets incompatible theories of value coexist on a single page.</p><button class="flg" data-flag="e2p12" data-flagged="{{ ef.e2p12 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e2s4">What goes on the page</h2>
+          <div data-passage="e2p13" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><div style="flex:1 1 46ch;max-width:66ch;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">For a sustaining portfolio in regulated manufacturing, the domains nearly name themselves, because they map onto what the functions already fear.</p><div style="border-left:3px solid #0A0A0A;padding:2px 0 2px 20px;margin:14px 0;display:flex;flex-direction:column;gap:10px;"><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">Safety</em>: postmarket and field exposure, the domain no one argues with.</p><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">Availability</em>: supply continuity, shortage and backorder risk. Note that this is where the business unit’s revenue fear and supply chain’s continuity fear finally look at the same facts.</p><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">Reliability</em>: the design and process debt being quietly spent. Aging components, single-source dependencies, fixes deferred.</p><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;"><em style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;">Quality-system health</em>: deviation load, workaround age, CAPA backlog. The local coping that normally hides strain, converted into a signal instead.</p></div></div><button class="flg" data-flag="e2p13" data-flagged="{{ ef.e2p13 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p14" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><div style="flex:1 1 46ch;max-width:66ch;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">Three design rules keep the page honest.</p><div style="margin:14px 0 0;display:flex;flex-direction:column;gap:10px;"><div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;flex-shrink:0;">01</span><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;">Feed each domain from data the operation already produces (deviations, expedites, complaint files, last-time-buy notices) so the scorecard adds no reporting bureaucracy to resent.</p></div><div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;flex-shrink:0;">02</span><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;">Weight by risk, not activity, so a ginormous exposure can never hide behind a small count.</p></div><div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;flex-shrink:0;">03</span><p style="font-size:18px;line-height:1.6;color:#0A0A0A;margin:0;">Give every domain an owner and a threshold, because an unowned measure is an opinion.</p></div></div></div><button class="flg" data-flag="e2p14" data-flagged="{{ ef.e2p14 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p15" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><div style="flex:1 1 46ch;max-width:66ch;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">Then notice what the scorecard deliberately does not do: it does not merge the two value systems. Each side’s fear stays legible in its own terms. What changes is what happens when the logics collide on a real case:</p><p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.5;color:#0A0A0A;border-left:3px solid #0A0A0A;padding:2px 0 2px 20px;margin:14px 0;">A shortage the business unit wants solved with an expensive redesign and supply chain wants absorbed with a workaround.</p><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;">Before, that collision was a chronic stalemate conducted in mismatched currencies. On the instrument, it becomes a discrete, decidable question (this exposure, this threshold, this tradeoff) escalated to the one forum with the legitimacy to arbitrate it, which in a regulated manufacturer already exists and is already mandatory. What makes the whole machine binding is a consequence mechanism, a ceiling on unresolved exposure that pauses discretionary work when crossed, but that is the second half of the machine. The prior question, answered here, is what deserves a ceiling at all.</p></div><button class="flg" data-flag="e2p15" data-flagged="{{ ef.e2p15 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+
+          <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:44px 0 0;max-width:60ch;" id="e2s5">The table</h2>
+          <div data-passage="e2p16" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The leader was handed the assignment <em>prove the portfolio’s worth</em> and heard, as almost anyone would, <em>produce the number.</em> Three years inside that trap taught him what the best operators had already institutionalized: the assignment was miswritten. The goal was never to make revenue-logic and continuity-logic agree on what value is. They won’t, and they shouldn’t have to. The goal was to build a table both can sit at, where each side’s fear is measured in its own terms, and where their collisions stop being stalemates and become decisions, with an owner, a forum, and a date.</p><button class="flg" data-flag="e2p16" data-flagged="{{ ef.e2p16 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+          <div data-passage="e2p17" style="display:flex;align-items:flex-start;flex-wrap:wrap;gap:8px 20px;margin-top:22px;"><p style="font-size:18px;line-height:1.68;color:#0A0A0A;margin:0;flex:1 1 46ch;max-width:66ch;">The number nobody would accept does not exist. The table they would both sit at can be built this quarter.</p><button class="flg" data-flag="e2p17" data-flagged="{{ ef.e2p17 }}" onClick="{{ onFlagToggle }}" data-print="hide" style="background:none;border:none;padding:0;margin-left:auto;margin-top:6px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;"><span class="fl0">too close to home?</span><span class="fl1">flagged</span></button></div>
+        </div>
+
+        <div data-print="hide" style="margin-top:56px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;justify-content:flex-end;">
+          <button onClick="{{ goClose }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:14px 24px;font-size:15px;font-weight:500;" style-hover="{{ btnDarkHover }}">Continue to the close</button>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= CLOSE ================= -->
+  <sc-if value="{{ flags.close }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Close" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="border-bottom:1px solid #0A0A0A;padding-bottom:24px;max-width:64ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Close · the sixth lock</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;max-width:24ch;">Where these go from here. (Nowhere, without you.)</h2>
+      </div>
+
+      <!-- Block 2 · "From two of ours" · held for v2 per the spec:
+           [PLACEHOLDER — action item #2 from the call, content owed.] Notes from the two DHW team members
+           with sustaining-engineering experience. Format: 150–250 words each, first-person, "what I'd look at
+           first in a portfolio like this." If the notes aren't ready at launch, cut this block rather than
+           shipping it thin — it can arrive as the site's v2, which also creates a natural, pressure-free
+           reason to reconnect. -->
+
+      <section style="margin-top:40px;max-width:70ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">The standing offer</span>
+        <p style="font-size:17px;line-height:1.62;color:#0A0A0A;margin:14px 0 0;">Two things stand exactly as said on the call. If a quick data question comes up (Power Query, the model, anything low-level), email me and I’ll coach you through it. And if either essay turns out to be worth a real conversation, you know where I am. Otherwise: use all of it. Forward it. It was written to be handed to a leader who doesn’t know what to look for.</p>
+      </section>
+
+      <section style="margin-top:40px;border-top:1px solid #C8C4BB;padding-top:32px;max-width:70ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">The record</span>
+        <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:12px 0 0;">Everything you affirm, correct, add, or flag collects here, saved in this browser. Download it as one plain-text file to send back to us.</p>
+        <sc-if value="{{ hasRecord }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ recordLines }}" as="r" hint-placeholder-count="3">
+              <div style="border-left:2px solid #C8C4BB;padding:4px 0 4px 14px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:{{ r.kindColor }};flex-shrink:0;min-width:88px;">{{ r.kind }}</span>
+                <span style="font-size:14px;line-height:1.5;color:#0A0A0A;">{{ r.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noRecord }}" hint-placeholder-val="{{ true }}">
+          <p style="font-size:14px;font-style:italic;color:#6B6862;margin:16px 0 0;">Nothing on the record yet.</p>
+        </sc-if>
+        <div style="margin-top:22px;">
+          <button onClick="{{ onDownloadRecord }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:13px 22px;font-size:14.5px;font-weight:500;" style-hover="{{ btnDarkHover }}">Download the record</button>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ================= CASE ROOM (off-spine) ================= -->
+  <sc-if value="{{ flags.cases }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Case room" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="border-bottom:1px solid #0A0A0A;padding-bottom:24px;max-width:66ch;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#6B6862;">Off the spine · the evidence</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;">For the day someone asks <em style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;">says who?</em></h2>
+        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:18px 0 0;max-width:64ch;">None of what the essays argue rests on our say-so. Eight cases below: what was done, what was documented, what carries over to a sustaining portfolio. Every card shows its evidence grade, because a file that grades its own sources is one you can circulate without apologizing for it. Flag the ones that map to your situation; if we ever talk again, your flags are the agenda. The full research file, sources and all, is at the bottom of this page.</p>
+      </div>
+      <sc-if value="{{ hasCaseFlags }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:16px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#0A0A0A;">{{ caseFlagCount }} flagged as mapping to your portfolio.</span>
+        </div>
+      </sc-if>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;">
+        <sc-for list="{{ caseCards }}" as="c" hint-placeholder-count="8">
+          <article style="border:1px solid #0A0A0A;background:{{ c.bg }};padding:24px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#D64A1F;">{{ c.tag }}</span>
+              <button onClick="{{ c.onFlag }}" style="{{ c.flagStyle }}" style-hover="{{ c.flagHover }}">{{ c.flagLabel }}</button>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;line-height:1.25;letter-spacing:-0.012em;margin:0;">{{ c.title }}</h3>
+            <div style="border-top:1px solid #C8C4BB;padding-top:12px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">Setting</span>
+              <p style="font-size:13.5px;line-height:1.55;color:#0A0A0A;margin:5px 0 0;">{{ c.setting }}</p>
+            </div>
+            <div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">The move</span>
+              <p style="font-size:13.5px;line-height:1.55;color:#0A0A0A;margin:5px 0 0;">{{ c.move }}</p>
+            </div>
+            <div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">Documented outcome</span>
+              <p style="font-size:13.5px;line-height:1.55;color:#0A0A0A;margin:5px 0 0;">{{ c.outcome }}</p>
+            </div>
+            <div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">What transfers</span>
+              <p style="font-size:13.5px;line-height:1.55;color:#0A0A0A;margin:5px 0 0;">{{ c.transfers }}</p>
+            </div>
+            <div style="border-top:1px solid #C8C4BB;padding-top:10px;margin-top:auto;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">Evidence grade</span>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5;color:#0A0A0A;margin:5px 0 0;">{{ c.grade }}</p>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <div style="margin-top:40px;border-top:1px solid #0A0A0A;padding-top:24px;max-width:66ch;">
+        <p style="font-size:16px;line-height:1.6;color:#0A0A0A;margin:0;">The full research file behind these cases is here: the deep dives, the cross-cutting patterns, the transfer analysis, and a graded source list. <a href="The Research File.dc.html" style="color:#D64A1F;text-decoration:underline;text-underline-offset:3px;">Read online</a> / <a href="The Research File.dc.html?print=1" style="color:#D64A1F;text-decoration:underline;text-underline-offset:3px;">download print version</a>. It’s yours to circulate, with or without our name on it.</p>
+      </div>
+      <div style="margin-top:32px;">
+        <button onClick="{{ goBridge }}" style="background:none;border:1px solid #0A0A0A;color:#0A0A0A;padding:12px 22px;font-size:14px;" style-hover="{{ ghostHoverG }}">← Back to the essays</button>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- FOOTER -->
+  <footer data-print="hide" style="border-top:1px solid #0A0A0A;">
+    <div style="max-width:1180px;margin:0 auto;padding:24px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div style="border-left:3px solid #D64A1F;padding:4px 0 4px 16px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">v1 · prepared after our July 14 conversation · Dark Horse Works · Demand Discovery</span>
+      </div>
+      <button onClick="{{ onReset }}" style="background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">Reset session</button>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D64A1F&quot;,&quot;options&quot;:[&quot;#D64A1F&quot;,&quot;#B8593E&quot;,&quot;#0A0A0A&quot;],&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  KEY = 'dhw.scoreboard.v1.2026-07';
+  SURF = ['engage', 'listen', 'bridge', 'essay1', 'essay2', 'close'];
+  E1_IDS = Array.from({ length: 20 }, (_, i) => 'e1p' + (i + 1));
+  E2_IDS = Array.from({ length: 17 }, (_, i) => 'e2p' + (i + 1));
+
+  state = this.load();
+
+  load() {
+    const d = this.defaults();
+    try {
+      const s = JSON.parse(localStorage.getItem(this.KEY));
+      if (s && s.v === d.v) return Object.assign({}, d, s, { editId: null, editDraft: '' });
+    } catch (e) {}
+    return d;
+  }
+  save() { try { localStorage.setItem(this.KEY, JSON.stringify(this.state)); } catch (e) {} }
+  update(u) { this.setState(u, () => this.save()); }
+
+  defaults() {
+    return {
+      v: 3,
+      surface: 'engage',
+      listenIndex: 0,
+      listenFilter: 'all',
+      listenExpanded: {},
+      editId: null, editDraft: '',
+      listenAddDraft: '',
+      bridgeExp: { e1: false, e2: false },
+      flagMode: false,
+      essayFlags: {},
+      listen: [
+        { id: 'l1', tag: 'We heard', headline: 'You solved the first problem yourself.', face: 'Two weeks of doing month-end yourself solved most of what your first email described. It cleared the way for the real conversation.', correction: '', status: '' },
+        { id: 'l2', tag: 'We heard', headline: 'The real ask: the scoreboard.', face: '\u201cWhere I think I need the real help is around the scoreboard. How do we measure success?\u201d You asked it twice. Everything past this card is our answer.', correction: '', status: '' },
+        { id: 'l3', tag: 'We heard', headline: 'The counts don\u2019t work.', face: 'The portfolio\u2019s only measure has ever been counts: in, out, approved, active, cancelled. Your own BU leaders reject them: \u201cI got one project that\u2019s this big and another that\u2019s ginormous and you\u2019re counting them exactly the same.\u201d You agree with them.', correction: '', status: '' },
+        { id: 'l4', tag: 'We heard', headline: 'The financial measure isn\u2019t available.', face: 'Revenue attribution for sustaining work is, in your experience, painfully difficult to obtain. When you pushed operations finance to price line-downs and back-orders, they got, in your word, jumpy.', correction: '', status: '' },
+        { id: 'l5', tag: 'We inferred', headline: 'Two audiences, two definitions of value.', face: 'Business units read the portfolio in revenue. Global supply chain reads it in continuity. You watched the same line-down land as an emergency on one side of the house and as routine on the other.', correction: '', status: '' },
+        { id: 'l6', tag: 'We inferred', headline: 'Good coping hides the impact.', face: 'Asked whether pausing the report-out caused any business impact, every BU leader said no. You also told us how shortages actually get handled: the item comes out of the kit, the customer is told, the order ships.', correction: '', status: '' },
+        { id: 'l7', tag: 'We heard', headline: 'Nobody asked for it back.', face: 'Two and a half years of monthly report-outs. Paused at the end of the year. Six months on, no one has asked where it went, and you\u2019re left with the honest question: do we even need it?', correction: '', status: '' },
+        { id: 'l8', tag: 'We heard', headline: 'Your leaders can\u2019t tell you what to build.', face: 'Your leaders, in your words, \u201cdon\u2019t know what they don\u2019t know in this space.\u201d They can\u2019t tell you what the scoreboard should show, and everyone agrees the counts aren\u2019t it.', correction: '', status: '' }
+      ],
+      cases: [
+        { id: 'k1', n: 1, tag: 'Case 1 \u00b7 The domains', title: 'The MDIC Case for Quality pilot', setting: 'Medical devices: FDA, MDIC, and the CMMI Institute.', move: 'The pilot first sought one common metric set for all manufacturers. It failed. The template confused people, the burden was heavy, and firms picked metrics to show FDA what they thought it wanted to see. The pivot: four domains (Safety, Effectiveness, Reliability, Availability), with firms submitting the measures they already ran their operations on.', outcome: 'After the pivot, FDA reported more engagement, more metrics submitted, and submissions more relevant to product quality and organizational performance, alongside faster review timelines and reported gains in trust and data sharing.', transfers: 'The nearest direct precedent for your scoreboard: regulator-legible, native to your existing controls, and proof that abandoning the single number raised participation rather than lowering it.', grade: 'Industry-consortium primary reports; MedTech-specific; not peer-reviewed.', fav: false },
+        { id: 'k2', n: 2, tag: 'Case 2 \u00b7 The warning', title: 'BP Texas City and the Baker Panel', setting: 'Refining, 2005\u20132007.', move: 'None, at first. Leadership watched personal-injury rates improve and read them as safety under control. The Baker Panel found the improving lagging metric had bred false confidence while process risk worsened, and recommended an integrated set of leading and lagging process-safety indicators with executive and board accountability.', outcome: 'The industry built API RP 754\u2019s tiered indicator framework in response; the U.S. Chemical Safety Board later rated progress on the recommendation acceptable, while still noting shortcomings.', transfers: 'Your \u201cno backorders this month\u201d is their injury rate: true, and not the risk that matters. Note the shape of the industry\u2019s answer, a tiered set of indicators rather than a better single score.', grade: 'Independent investigation, primary; the strongest evidence in the file.', fav: false },
+        { id: 'k3', n: 3, tag: 'Case 3 \u00b7 The mechanism', title: 'Google\u2019s error budget, via the Evernote rollout', setting: 'Internet services and site-reliability engineering.', move: 'A service-level objective plus a fixed budget of tolerable failure, agreed in advance. Within budget, product teams ship at speed; budget burned, reliability work takes priority automatically. Nobody argues; the threshold decides.', outcome: 'The Evernote case reports roughly three months to find targets that fit the service, after which teams used them to steer reliability investment. Google\u2019s own material warns that comfort metrics such as raw volume and simple averages soothe rather than inform.', transfers: 'The regulated-hardware analog is a bounded exposure budget by product family or business unit, above which discretionary change work pauses. This is the consequence mechanism Essay I lands on.', grade: 'Primary practitioner sources.', fav: false },
+        { id: 'k4', n: 4, tag: 'Case 4 \u00b7 The absorbed signal', title: 'Honeywell\u2019s Safety Observation System', setting: 'Industrial operations.', move: 'Replaced a managers-only near-miss channel with a system every employee could report into, in their own language, with corrective actions visible once opened and once closed.', outcome: 'Its building-solutions business logged more than 82,000 observations in a single year, about eight per employee, while recordable injuries fell from 108 to 54 over three years. Leaders credited the direction of attention, not the volume.', transfers: 'Your exclude-and-ship and cross-train-and-move copes are near misses nobody logs. Widen the net to capture the coping itself (expedites, deviations, workarounds, last-time buys) and absorbed strain becomes a leading indicator instead of a silence.', grade: 'Practitioner benchmarking (Campbell Institute); named case with reported figures; not peer-reviewed.', fav: false },
+        { id: 'k5', n: 5, tag: 'Case 5 \u00b7 The validation', title: 'Cummins\u2019 leading-indicator program', setting: 'Heavy manufacturing.', move: 'Chose a few candidate leading indicators and tested them against outcomes instead of trusting them. Training hours correlated with incident rate at r = \u22120.86 across the corporation and its business units, so they set targets, then investigated why it worked. Indicators are reviewed every six months and refreshed annually, on the explicit premise that no indicator stays predictive forever.', outcome: 'Adoption, target-setting, and a disciplined refresh cycle; the permanent \u201choly grail\u201d indicator was rejected as a category.', transfers: 'The answer to which signals belong on your scoreboard is empirical. Test change-review slippage, NCR recurrence, deviation frequency, and CAPA aging against the outcomes you actually fear, and keep only what predicts.', grade: 'Practitioner benchmarking; named case with reported statistics.', fav: false },
+        { id: 'k6', n: 6, tag: 'Case 6 \u00b7 The ownership', title: 'USG and Fluor', setting: 'Building materials; global engineering and construction.', move: 'USG\u2019s plant leaders spent years co-designing their own leading-indicator rating, executed by mixed operational teams visiting peer sites, scored for self-evaluation rather than force-ranking. Fluor rebuilt its HSE audit around leading indicators and, when \u201cmanagement in action\u201d scored weakest, took the finding to executive leadership with prescribed behaviors: weekly site walks, presence at shift-start planning.', outcome: 'USG reported injury reduction plus broader employee ownership; at Fluor, the weakest audit category became the strongest within six months of the executive intervention.', transfers: 'A scoreboard built by analytics alone becomes shelfware. Yours should be co-defined with operations, quality, supply chain, and engineering, every measure with an owner and a response rule.', grade: 'Practitioner benchmarking; two named cases; not peer-reviewed.', fav: false },
+        { id: 'k7', n: 7, tag: 'Case 7 \u00b7 The value language', title: 'FDA\u2019s quality-economics synthesis', setting: 'Pharmaceutical manufacturing, 2024.', move: 'FDA assembled the economic case that preventive quality investment pays in operational terms rather than speculative revenue terms.', outcome: 'One cited site with intermediate quality-management maturity cut defects by more than half, cut waste by three quarters, and redirected a quarter of its staff to other work; a benchmarking study across more than 200 establishments found quality practices correlated with manufacturing and delivery performance.', transfers: '\u201cCapacity freed\u201d is the rare value language both of your audiences can read without translation: prevention that returns people and time to the work the future needs. It is the closest thing in the file to a bridge over the revenue-versus-continuity divide.', grade: 'Government synthesis citing secondary examples, plus one peer-reviewed benchmarking study.', fav: false },
+        { id: 'k8', n: 8, tag: 'Case 8 \u00b7 Pricing the invisible', title: 'The hidden factory', setting: 'Cost-of-quality and activity-based-costing literature.', move: 'Methods for pricing what standard accounting drops (rework, opportunity loss, absorbed effort), including time-driven activity-based costing for estimating what coping work actually costs.', outcome: 'A consistent finding that traditional accounting misses large categories of quality cost; also consistent reports of managerial resistance when hidden costs surface.', transfers: 'This doesn\u2019t replace the scoreboard, but it takes the edge off the finance wall from your own experience. When someone insists on dollars, these methods produce a defensible approximation of what the coping costs, without asking finance to invent revenue attribution.', grade: 'Peer-reviewed literature; strongest as method, not outcome evidence.', fav: false }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    const h = (window.location.hash || '').replace('#', '');
+    if (h && (this.SURF.indexOf(h) >= 0 || h === 'cases')) this.update(() => ({ surface: h }));
+    this._onKey = (ev) => {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+      const t = ev.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      if (ev.key >= '1' && ev.key <= '6') { this.go(this.SURF[parseInt(ev.key, 10) - 1]); ev.preventDefault(); }
+    };
+    window.addEventListener('keydown', this._onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._onKey); clearTimeout(this._adv); }
+
+  go(surface) { this.update(() => ({ surface })); window.scrollTo(0, 0); }
+
+  FILTER_TAGS = { heard: 'We heard', inferred: 'We inferred', added: 'You added' };
+  filtered(s) {
+    s = s || this.state;
+    const t = this.FILTER_TAGS[s.listenFilter];
+    const out = t ? s.listen.filter((x) => x.tag === t) : s.listen;
+    return out.length ? out : s.listen;
+  }
+  setFilter(f) { clearTimeout(this._adv); this.update(() => ({ listenFilter: f, listenIndex: 0, editId: null, editDraft: '' })); }
+
+  // ---- listen ----
+  openEdit(item) { this.setState({ editId: item.id, editDraft: item.correction || item.face }); }
+  cancelEdit() { this.setState({ editId: null, editDraft: '' }); }
+  saveCorrection() {
+    const { editId: id, editDraft: d } = this.state;
+    const txt = (d || '').trim();
+    if (!txt) { this.cancelEdit(); return; }
+    this.update((s) => ({
+      listen: s.listen.map((x) => x.id === id ? Object.assign({}, x, { correction: txt, status: 'edited' }) : x),
+      editId: null, editDraft: ''
+    }));
+  }
+  reviewAndAdvance(id, status) {
+    const fl = this.filtered();
+    const idx = fl.findIndex((x) => x.id === id);
+    this.update((s) => ({ listen: s.listen.map((x) => x.id === id ? Object.assign({}, x, { status: x.status === status ? '' : status }) : x) }));
+    clearTimeout(this._adv);
+    if (idx > -1 && idx < fl.length - 1) {
+      this._adv = setTimeout(() => this.update((s) => ({ listenIndex: Math.min(idx + 1, this.filtered(s).length - 1) })), 480);
+    }
+  }
+  toggleExpand(id) { this.update((s) => ({ listenExpanded: Object.assign({}, s.listenExpanded, { [id]: !s.listenExpanded[id] }) })); }
+  listenGoTo(i) { clearTimeout(this._adv); this.update(() => ({ listenIndex: i, editId: null, editDraft: '' })); }
+  addListen() {
+    const txt = (this.state.listenAddDraft || '').trim();
+    if (!txt) return;
+    this.update((s) => ({
+      listen: s.listen.concat([{ id: 'lx' + Date.now(), tag: 'You added', headline: 'Added by Matt', face: txt, correction: '', status: '', added: true }]),
+      listenAddDraft: '', listenFilter: 'all', listenIndex: s.listen.length
+    }));
+  }
+
+  // ---- flags ----
+  toggleEssayFlag(ev) {
+    const el = ev.currentTarget;
+    const id = el.getAttribute('data-flag');
+    if (!id) return;
+    const wrap = el.closest('[data-passage]');
+    const p = wrap ? wrap.querySelector('p') : null;
+    const raw = p ? p.textContent.replace(/\s+/g, ' ').trim() : '';
+    const excerpt = raw.length > 110 ? raw.slice(0, 110).trim() + '\u2026' : raw;
+    this.update((s) => {
+      const f = Object.assign({}, s.essayFlags);
+      if (f[id]) delete f[id]; else f[id] = excerpt;
+      return { essayFlags: f };
+    });
+  }
+  toggleCaseFlag(id) { this.update((s) => ({ cases: s.cases.map((c) => c.id === id ? Object.assign({}, c, { fav: !c.fav }) : c) })); }
+
+  // ---- record ----
+  recordEntries() {
+    const s = this.state;
+    const out = [];
+    s.listen.forEach((x) => {
+      if (x.added) { out.push({ kind: 'Added', text: x.face }); return; }
+      if (x.status === 'lands') out.push({ kind: 'Affirmed', text: x.headline });
+      if (x.correction) out.push({ kind: 'Corrected', text: x.headline + ' \u00b7 \u201c' + x.correction + '\u201d' });
+      if (x.status === 'skip') out.push({ kind: 'Skipped', text: x.headline });
+    });
+    const flagText = (ids, label) => ids.forEach((id) => { if (s.essayFlags[id]) out.push({ kind: label, text: '\u201c' + s.essayFlags[id] + '\u201d' }); });
+    flagText(this.E1_IDS, 'Essay I flag');
+    flagText(this.E2_IDS, 'Essay II flag');
+    s.cases.forEach((c) => { if (c.fav) out.push({ kind: 'Case flag', text: c.tag + ' \u00b7 ' + c.title }); });
+    return out;
+  }
+  downloadRecord() {
+    const lines = this.recordEntries().map((r) => r.kind + ' \u00b7 ' + r.text);
+    const txt = ['The Scoreboard Question \u00b7 the record', 'Compiled ' + new Date().toISOString().slice(0, 10), ''].concat(lines.length ? lines : ['Nothing on the record yet.']).join('\n');
+    const blob = new Blob([txt], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'scoreboard-record.txt';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  }
+
+  reset() {
+    if (typeof confirm === 'function' && !confirm('Reset this site? All affirmations, corrections, additions, and flags will be cleared.')) return;
+    try { localStorage.removeItem(this.KEY); } catch (e) {}
+    this.setState(this.defaults(), () => this.save());
+    window.scrollTo(0, 0);
+  }
+
+  // ===== render =====
+  renderVals() {
+    const s = this.state;
+    const ACCENT = this.props.accentColor || '#D64A1F';
+    const MONO = "'JetBrains Mono',monospace";
+    const flags = {
+      engage: s.surface === 'engage', listen: s.surface === 'listen', bridge: s.surface === 'bridge',
+      essay1: s.surface === 'essay1', essay2: s.surface === 'essay2', close: s.surface === 'close', cases: s.surface === 'cases'
+    };
+
+    const labels = { engage: 'Engage', listen: 'Listen', bridge: 'Bridge', essay1: 'Essay I', essay2: 'Essay II', close: 'Close' };
+    const navItems = this.SURF.map((key, i) => {
+      const active = s.surface === key;
+      return {
+        key, label: labels[key], num: String(i + 1).padStart(2, '0'),
+        onClick: () => this.go(key),
+        style: { background: 'none', border: 'none', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: '7px', color: active ? '#0A0A0A' : '#6B6862', borderBottom: active ? '2px solid ' + ACCENT : '2px solid transparent', transition: 'color 150ms ease' },
+        hoverStyle: { color: '#0A0A0A' },
+        numStyle: { fontFamily: MONO, fontSize: '10px', color: active ? ACCENT : '#C8C4BB' }
+      };
+    });
+    const idx = this.SURF.indexOf(s.surface);
+    const progressPct = idx < 0 ? '0%' : Math.round(((idx + 1) / this.SURF.length) * 100) + '%';
+    const casesActive = s.surface === 'cases';
+    const casesLinkStyle = { background: 'none', border: '1px solid ' + (casesActive ? '#0A0A0A' : '#C8C4BB'), color: casesActive ? '#0A0A0A' : '#6B6862', padding: '7px 14px', fontSize: '13px' };
+
+    const btnDarkHover = { background: '#1A1A1A' };
+    const ghostHover = { background: 'rgba(10,10,10,0.04)' };
+    const ghostHoverG = { background: 'rgba(10,10,10,0.06)' };
+
+    // ---- listen ----
+    const tagColors = { 'We heard': '#6B6862', 'We inferred': ACCENT, 'You added': '#0A0A0A' };
+    const flist = this.filtered(s);
+    const total = flist.length;
+    const allTotal = s.listen.length;
+    const reviewed = s.listen.filter((x) => x.status).length;
+    const li = Math.min(Math.max(s.listenIndex || 0, 0), Math.max(total - 1, 0));
+    const cur = flist[li] || s.listen[0];
+    const filterDefs = [['all', 'All'], ['heard', 'We heard'], ['inferred', 'We inferred']];
+    if (s.listen.some((x) => x.added)) filterDefs.push(['added', 'You added']);
+    const listenFilters = filterDefs.map(([k, label]) => {
+      const active = (s.listenFilter || 'all') === k;
+      return { label, onClick: () => this.setFilter(k),
+        style: { background: active ? '#0A0A0A' : 'none', color: active ? '#F2F0EB' : '#4A4A4A', border: '1px solid ' + (active ? '#0A0A0A' : '#C8C4BB'), padding: '6px 13px', fontSize: '12.5px', fontFamily: MONO },
+        hoverStyle: active ? {} : { background: 'rgba(10,10,10,0.04)' } };
+    });
+    const railFor = (st) => st === 'lands' ? ACCENT : st === 'skip' ? '#C8C4BB' : st === 'edited' ? '#6B6862' : 'transparent';
+    const editing = s.editId === cur.id;
+    const affirmed = cur.status === 'lands';
+    const skipped = cur.status === 'skip';
+    const corrected = !!cur.correction;
+    const expanded = !!s.listenExpanded[cur.id];
+    const listenCurrent = {
+      num: String(li + 1).padStart(2, '0'),
+      numColor: affirmed ? ACCENT : '#C8C4BB',
+      tag: cur.tag, tagColor: tagColors[cur.tag] || '#6B6862',
+      headline: cur.headline, face: cur.face, correction: cur.correction,
+      railColor: railFor(cur.status),
+      editing,
+      hasDetail: !cur.added && !editing,
+      expanded,
+      onToggleDetail: () => this.toggleExpand(cur.id),
+      expandLabel: expanded ? 'Less' : 'More context',
+      onAffirm: () => this.reviewAndAdvance(cur.id, 'lands'),
+      onNotQuite: () => this.openEdit(cur),
+      onSkip: () => this.reviewAndAdvance(cur.id, 'skip'),
+      affirmLabel: affirmed ? 'Affirmed' : 'This lands',
+      affirmStyle: { background: affirmed ? ACCENT : 'none', color: affirmed ? '#fff' : '#4A4A4A', border: '1px solid ' + (affirmed ? ACCENT : '#C8C4BB'), padding: '9px 18px', fontSize: '14px', fontWeight: 500, whiteSpace: 'nowrap' },
+      affirmHover: affirmed ? { background: '#b83d16' } : ghostHover,
+      notQuiteLabel: cur.status === 'edited' ? 'Edited' : 'Not quite',
+      notQuiteStyle: { background: cur.status === 'edited' ? '#0A0A0A' : '#E6E3DC', color: cur.status === 'edited' ? '#F2F0EB' : '#0A0A0A', border: '1px solid #0A0A0A', padding: '9px 18px', fontSize: '14px', fontWeight: 500, whiteSpace: 'nowrap' },
+      notQuiteHover: cur.status === 'edited' ? { background: '#1A1A1A' } : { background: '#dcd8cf' },
+      skipLabel: skipped ? 'Skipped' : 'Skip',
+      skipStyle: { background: skipped ? '#E6E3DC' : 'none', color: '#6B6862', border: '1px solid #C8C4BB', padding: '9px 18px', fontSize: '14px', whiteSpace: 'nowrap' }
+    };
+    const faceVis = !editing && !corrected;
+    const lf = {};
+    for (let i = 1; i <= 8; i++) lf['lf' + i] = faceVis && cur.id === 'l' + i;
+    const lfAdded = faceVis && !!cur.added;
+    const lfCorrected = !editing && corrected;
+    const lx = {};
+    for (let i = 1; i <= 8; i++) lx['lx' + i] = cur.id === 'l' + i && expanded && !editing;
+    const listenRail = flist.map((it, i) => {
+      const st = it.status;
+      const isCur = i === li;
+      const fill = st === 'lands' ? ACCENT : st === 'edited' ? '#0A0A0A' : st === 'skip' ? '#C8C4BB' : 'transparent';
+      return { onClick: () => this.listenGoTo(i),
+        style: { width: isCur ? '32px' : '20px', height: '7px', background: fill, border: '1px solid ' + (fill === 'transparent' ? '#C8C4BB' : fill), outline: isCur ? '1px solid #0A0A0A' : 'none', outlineOffset: '2px', cursor: 'pointer', padding: 0, transition: 'width 200ms ease' } };
+    });
+    const listenAtStart = li === 0;
+    const listenAtEnd = li >= total - 1;
+
+    // ---- essay flags ----
+    const ef = {};
+    this.E1_IDS.concat(this.E2_IDS).forEach((id) => { ef[id] = !!s.essayFlags[id]; });
+
+    // ---- record ----
+    const entries = this.recordEntries();
+    const kindColors = { 'Affirmed': ACCENT, 'Corrected': '#0A0A0A', 'Added': '#0A0A0A', 'Skipped': '#6B6862', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A' };
+    const recordLines = entries.map((r) => ({ kind: r.kind, text: r.text, kindColor: kindColors[r.kind] || '#6B6862' }));
+
+    // ---- cases ----
+    const favCount = s.cases.filter((c) => c.fav).length;
+    const caseCards = s.cases.map((c) => ({
+      tag: c.tag, title: c.title, setting: c.setting, move: c.move, outcome: c.outcome, transfers: c.transfers, grade: c.grade,
+      bg: c.fav ? '#E6E3DC' : '#F2F0EB',
+      onFlag: () => this.toggleCaseFlag(c.id),
+      flagLabel: c.fav ? 'Flagged' : 'Flag',
+      flagStyle: { background: c.fav ? '#0A0A0A' : 'none', color: c.fav ? '#F2F0EB' : '#6B6862', border: '1px solid ' + (c.fav ? '#0A0A0A' : '#C8C4BB'), padding: '4px 12px', fontSize: '12px', fontFamily: MONO },
+      flagHover: c.fav ? {} : ghostHover
+    }));
+
+    return Object.assign({
+      flags, navItems, progressPct, casesLinkStyle,
+      goEngage: () => this.go('engage'), goListen: () => this.go('listen'), goBridge: () => this.go('bridge'),
+      goEssay1: () => this.go('essay1'), goEssay2: () => this.go('essay2'), goClose: () => this.go('close'), goCases: () => this.go('cases'),
+      goCasesLink: (e) => { e.preventDefault(); this.go('cases'); },
+      btnDarkHover, ghostHover, ghostHoverG,
+      // listen
+      listenProgress: reviewed + ' of ' + allTotal,
+      listenFilters,
+      listenCurrent, lfAdded, lfCorrected, listenRail,
+      listenStepLabel: (li + 1) + ' / ' + total,
+      listenNextLabel: listenAtEnd ? 'Go to the bridge' : 'Next point',
+      onListenNext: () => listenAtEnd ? this.go('bridge') : this.listenGoTo(Math.min(li + 1, total - 1)),
+      onListenPrev: () => this.listenGoTo(Math.max(li - 1, 0)),
+      listenPrevStyle: { background: 'none', border: '1px solid ' + (listenAtStart ? '#E6E3DC' : '#0A0A0A'), color: listenAtStart ? '#C8C4BB' : '#0A0A0A', padding: '11px 22px', fontSize: '14px', pointerEvents: listenAtStart ? 'none' : 'auto' },
+      listenNextStyle: { background: '#0A0A0A', border: 'none', color: '#F2F0EB', padding: '12px 24px', fontSize: '14px', fontWeight: 500 },
+      editDraft: s.editDraft,
+      onEditChange: (e) => this.setState({ editDraft: e.target.value }),
+      onCancelEdit: () => this.cancelEdit(),
+      onSaveCorrection: () => this.saveCorrection(),
+      listenAddDraft: s.listenAddDraft,
+      onListenAddChange: (e) => this.setState({ listenAddDraft: e.target.value }),
+      onListenAdd: () => this.addListen(),
+      // bridge
+      bx1: s.bridgeExp.e1, bx2: s.bridgeExp.e2,
+      bt1Label: s.bridgeExp.e1 ? 'Less' : 'More context',
+      bt2Label: s.bridgeExp.e2 ? 'Less' : 'More context',
+      onBridgeToggle1: () => this.update((st) => ({ bridgeExp: Object.assign({}, st.bridgeExp, { e1: !st.bridgeExp.e1 }) })),
+      onBridgeToggle2: () => this.update((st) => ({ bridgeExp: Object.assign({}, st.bridgeExp, { e2: !st.bridgeExp.e2 }) })),
+      // essays
+      ef, onFlagToggle: (ev) => this.toggleEssayFlag(ev),
+      fm: s.flagMode ? 'on' : 'off',
+      flagModeLabel: s.flagMode ? 'Done flagging' : 'Flag a passage',
+      onFlagMode: () => this.update((st) => ({ flagMode: !st.flagMode })),
+      onTocJump: (e) => {
+        e.preventDefault();
+        const el = document.getElementById(e.currentTarget.getAttribute('data-target'));
+        if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 76);
+      },
+      // close / record
+      hasRecord: recordLines.length > 0, noRecord: recordLines.length === 0, recordLines,
+      onDownloadRecord: () => this.downloadRecord(),
+      // cases
+      caseCards, caseFlagCount: favCount, hasCaseFlags: favCount > 0,
+      // footer
+      onReset: () => this.reset()
+    }, lf, lx);
+  }
+}
+</script>
+</body>
+</html>
