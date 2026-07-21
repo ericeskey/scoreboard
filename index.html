@@ -76,7 +76,7 @@
         <div>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#6B6862;">How this site works</span>
         </div>
-        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:0;max-width:60ch;">A short readback comes first: eight cards on what we heard, each one yours to affirm or correct, each one expandable if you want the fuller context. Then a short bridge into the essays. Off the spine sits a <a href="#cases" onClick="{{ goCasesLink }}" style="color:#0A0A0A;text-decoration:underline;text-underline-offset:3px;">case room</a>, eight precedents behind the essays’ argument, each graded, each flaggable, with the full research file beneath it. At the end: a standing offer, and the record.</p>
+        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:0;max-width:60ch;">A short readback comes first: eight cards on what we heard, each one yours to affirm or correct, each one expandable if you want the fuller context. Then a short bridge into the essays. Off the spine sits a <a href="#cases" onClick="{{ goCasesLink }}" style="color:#0A0A0A;text-decoration:underline;text-underline-offset:3px;">case room</a>, eight precedents behind the essays’ argument, each graded, each flaggable, with the full research file beneath it. After the essays, the EPR blueprint: the straw agenda and KPI set you asked for on the call, every piece yours to react to. At the end: a standing offer, and the record.</p>
       </div>
 
       <div style="margin-top:48px;border-left:3px solid #0A0A0A;padding:4px 0 4px 24px;max-width:62ch;">
@@ -89,7 +89,7 @@
       </div>
 
       <div style="margin-top:96px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;gap:32px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:#6B6862;">
-        <span>Listen</span><span style="color:#C8C4BB;">→</span><span>Bridge</span><span style="color:#C8C4BB;">→</span><span>Essay I</span><span style="color:#C8C4BB;">→</span><span>Essay II</span><span style="color:#C8C4BB;">→</span><span>Close</span>
+        <span>Listen</span><span style="color:#C8C4BB;">→</span><span>Bridge</span><span style="color:#C8C4BB;">→</span><span>Essay I</span><span style="color:#C8C4BB;">→</span><span>Essay II</span><span style="color:#C8C4BB;">→</span><span>Blueprint</span><span style="color:#C8C4BB;">→</span><span>Close</span>
       </div>
     </main>
   </sc-if>
@@ -333,8 +333,255 @@
         </div>
 
         <div data-print="hide" style="margin-top:56px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;justify-content:flex-end;">
-          <button onClick="{{ goClose }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:14px 24px;font-size:15px;font-weight:500;" style-hover="{{ btnDarkHover }}">Continue to the close</button>
+          <button onClick="{{ goBlueprint }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:14px 24px;font-size:15px;font-weight:500;" style-hover="{{ btnDarkHover }}">Continue to the blueprint</button>
         </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <!-- ================= BLUEPRINT ================= -->
+  <sc-if value="{{ flags.blueprint }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Blueprint" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:24px;">
+        <div style="max-width:64ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">The EPR blueprint · the sixth lock</span>
+          <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;max-width:24ch;">The quarterly review, sketched to be argued with.</h2>
+          <p style="font-size:17px;line-height:1.62;color:#0A0A0A;margin:18px 0 0;max-width:64ch;">On the call you asked for one concrete thing: a proposed agenda and KPI set for the quarterly Sustaining Enterprise Portfolio Review that replaces the paused monthly report-out. Here it is. Affirm what lands, note what doesn’t; it all joins the record.</p>
+        </div>
+        <div data-print="hide" style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0A0A0A;">{{ eprProgress }}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;margin-top:4px;">reacted</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;border:1px solid #0A0A0A;background:#E6E3DC;padding:clamp(22px,3.5vw,30px);max-width:980px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">A straw model</span>
+        <p style="font-size:15.5px;line-height:1.6;color:#0A0A0A;margin:12px 0 0;max-width:66ch;">The real version gets built with you: tested with your BU leaders, mapped to the data you actually hold, sized to whoever sits in the EPR room. Your reactions are the first pass of that work.</p>
+      </div>
+
+      <section style="margin-top:48px;max-width:1100px;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Built backward from three decisions</span>
+        <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px 28px;">
+          <div style="border-top:1px solid #0A0A0A;padding-top:16px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Decision 1</span>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.35;color:#0A0A0A;margin:10px 0 0;">Are we getting better, getting worse, or seeing no change?</p>
+            <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:10px 0 0;">The question your prior leadership kept asking and the counts never answered.</p>
+          </div>
+          <div style="border-top:1px solid #0A0A0A;padding-top:16px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Decision 2</span>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.35;color:#0A0A0A;margin:10px 0 0;">What portfolio risks are coming?</p>
+            <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:10px 0 0;">Anticipation over history: the fires visible this quarter, before they consume the next one.</p>
+          </div>
+          <div style="border-top:1px solid #0A0A0A;padding-top:16px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">Decision 3</span>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.35;color:#0A0A0A;margin:10px 0 0;">Is there capacity to take on more margin-improvement work?</p>
+            <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:10px 0 0;">Sustaining read as value-creation capacity, with an honest account of how much is spoken for.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:56px;max-width:980px;">
+        <div style="border-bottom:1px solid #0A0A0A;padding-bottom:14px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;">
+          <div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">The agenda</span>
+            <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:8px 0 0;">One hour, quarterly. It ends in decisions.</h3>
+          </div>
+        </div>
+        <sc-for list="{{ eprAgenda }}" as="a" hint-placeholder-count="5">
+          <div style="{{ a.rowStyle }}">
+            <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.02em;line-height:1;color:{{ a.numColor }};">{{ a.num }}</span>
+              <h4 style="font-size:18px;font-weight:700;letter-spacing:-0.012em;line-height:1.3;margin:0;">{{ a.title }}</h4>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:3px 8px;white-space:nowrap;">{{ a.serves }}</span>
+              <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6862;white-space:nowrap;">{{ a.time }}</span>
+            </div>
+            <p style="font-size:15px;line-height:1.6;color:#4A4A4A;margin:10px 0 0;max-width:66ch;">{{ a.body }}</p>
+            <sc-if value="{{ a.c.showNote }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:12px;border-left:2px solid #0A0A0A;padding-left:12px;max-width:62ch;">
+                <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;">{{ a.c.note }}</p>
+                <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:6px 0 0;">Your note · on the record</p>
+              </div>
+            </sc-if>
+            <sc-if value="{{ a.c.editing }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;max-width:62ch;">
+                <textarea value="{{ eprDraft }}" onChange="{{ onEprDraftChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:14px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
+                <div style="display:flex;gap:8px;">
+                  <button onClick="{{ onEprSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save note</button>
+                  <button onClick="{{ onEprCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
+                </div>
+              </div>
+            </sc-if>
+            <div data-print="hide" style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+              <button onClick="{{ a.c.onAffirm }}" style="{{ a.c.affirmStyle }}" style-hover="{{ a.c.affirmHover }}">{{ a.c.affirmLabel }}</button>
+              <button onClick="{{ a.c.onNote }}" style="{{ a.c.noteStyle }}" style-hover="{{ a.c.noteHover }}">{{ a.c.noteLabel }}</button>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+
+      <section style="margin-top:64px;">
+        <div style="max-width:66ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">The KPI set</span>
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:8px 0 0;">A scoreboard both sides of the house can read.</h3>
+          <p style="font-size:15.5px;line-height:1.6;color:#4A4A4A;margin:12px 0 0;">Four bounded domains, in the essays’ sense: small enough to govern, fed by signals the operation already produces, legible to business units and supply chain alike.</p>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:12px 28px;flex-wrap:wrap;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.03em;color:#6B6862;border:1px solid #C8C4BB;padding:12px 16px;max-width:980px;">
+          <span>Direction vs. last quarter: <span style="color:#0A0A0A;">▲ better</span> · <span style="color:#D64A1F;">▼ worse</span> · <span style="color:#C8C4BB;">▬ no change</span></span>
+          <span style="display:flex;align-items:center;gap:8px;"><span style="background:#0A0A0A;color:#F2F0EB;padding:3px 8px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;">Now</span> reachable from data you hold today</span>
+          <span style="display:flex;align-items:center;gap:8px;"><span style="border:1px solid #D64A1F;color:#D64A1F;padding:2px 7px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;">Build</span> waits on the impacted-SKU financial linkage</span>
+        </div>
+        <sc-for list="{{ eprDomains }}" as="d" hint-placeholder-count="3">
+          <div style="margin-top:36px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:10px;">
+              <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">{{ d.label }}</span>
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:19px;color:#0A0A0A;">{{ d.q }}</span>
+              </div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">{{ d.serves }}</span>
+            </div>
+            <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+              <sc-for list="{{ d.kpis }}" as="k" hint-placeholder-count="4">
+                <article style="border:1px solid #0A0A0A;background:{{ k.bg }};padding:22px;display:flex;flex-direction:column;gap:10px;break-inside:avoid;">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+                    <h4 style="font-size:16.5px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">{{ k.name }}</h4>
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:3px;white-space:nowrap;flex-shrink:0;"><span style="color:#0A0A0A;">▲</span><span style="color:#D64A1F;">▼</span><span style="color:#C8C4BB;">▬</span></span>
+                  </div>
+                  <p style="font-size:13.5px;line-height:1.55;color:#4A4A4A;margin:0;">{{ k.body }}</p>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px;">
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:3px 8px;white-space:nowrap;">{{ k.serves }}</span>
+                    <span style="margin-left:auto;display:flex;align-items:center;gap:6px;">
+                      <sc-if value="{{ k.hasNow }}" hint-placeholder-val="{{ true }}"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;background:#0A0A0A;color:#F2F0EB;padding:4px 9px;white-space:nowrap;">Now</span></sc-if>
+                      <sc-if value="{{ k.hasArrow }}" hint-placeholder-val="{{ false }}"><span style="color:#6B6862;font-size:11px;">→</span></sc-if>
+                      <sc-if value="{{ k.hasBuild }}" hint-placeholder-val="{{ false }}"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid #D64A1F;color:#D64A1F;padding:3px 8px;white-space:nowrap;">Build</span></sc-if>
+                    </span>
+                  </div>
+                  <sc-if value="{{ k.c.showNote }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-left:2px solid #0A0A0A;padding-left:12px;">
+                      <p style="font-size:13.5px;line-height:1.5;color:#0A0A0A;margin:0;">{{ k.c.note }}</p>
+                      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:5px 0 0;">Your note · on the record</p>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ k.c.editing }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                      <textarea value="{{ eprDraft }}" onChange="{{ onEprDraftChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:13.5px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
+                      <div style="display:flex;gap:8px;">
+                        <button onClick="{{ onEprSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save note</button>
+                        <button onClick="{{ onEprCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <div data-print="hide" style="display:flex;gap:8px;border-top:1px solid #E6E3DC;padding-top:12px;flex-wrap:wrap;">
+                    <button onClick="{{ k.c.onAffirm }}" style="{{ k.c.affirmStyle }}" style-hover="{{ k.c.affirmHover }}">{{ k.c.affirmLabel }}</button>
+                    <button onClick="{{ k.c.onNote }}" style="{{ k.c.noteStyle }}" style-hover="{{ k.c.noteHover }}">{{ k.c.noteLabel }}</button>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="margin-top:44px;border:1px solid #0A0A0A;background:#E6E3DC;padding:clamp(24px,4vw,36px);">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">D · Financial · the destination</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid #D64A1F;color:#D64A1F;padding:3px 8px;white-space:nowrap;">Build</span>
+          </div>
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:14px 0 0;">Where this lands: dollars.</h3>
+          <p style="font-size:16px;line-height:1.62;color:#0A0A0A;margin:12px 0 0;max-width:68ch;">Cost of sustaining, and impacted-SKU revenue at risk: the measures your leadership is asking for. They wait on one piece of plumbing, the link from impacted SKUs into the financial system, so the dollars are produced rather than invented. Agenda item 05 keeps the path visible every quarter.</p>
+          <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px 24px;">
+            <div style="border-top:1px solid #0A0A0A;padding-top:12px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">01 · First quarters</span>
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:8px 0 0;">The Now set tells a credible better-or-worse story from data you already hold.</p>
+            </div>
+            <div style="border-top:1px solid #0A0A0A;padding-top:12px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">02 · The linkage</span>
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:8px 0 0;">Impacted SKUs tied to the financial system, proven first in the business unit whose data sits closest.</p>
+            </div>
+            <div style="border-top:1px solid #0A0A0A;padding-top:12px;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">03 · The destination</span>
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:8px 0 0;">Cost of sustaining and revenue at risk, reported in dollars and trended like everything else.</p>
+            </div>
+          </div>
+          <sc-if value="{{ finC.showNote }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;border-left:2px solid #0A0A0A;padding-left:12px;max-width:62ch;">
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;">{{ finC.note }}</p>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:6px 0 0;">Your note · on the record</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ finC.editing }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;max-width:62ch;">
+              <textarea value="{{ eprDraft }}" onChange="{{ onEprDraftChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:14px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
+              <div style="display:flex;gap:8px;">
+                <button onClick="{{ onEprSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save note</button>
+                <button onClick="{{ onEprCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
+              </div>
+            </div>
+          </sc-if>
+          <div data-print="hide" style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;">
+            <button onClick="{{ finC.onAffirm }}" style="{{ finC.affirmStyle }}" style-hover="{{ finC.affirmHover }}">{{ finC.affirmLabel }}</button>
+            <button onClick="{{ finC.onNote }}" style="{{ finC.noteStyle }}" style-hover="{{ finC.noteHover }}">{{ finC.noteLabel }}</button>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:64px;max-width:980px;">
+        <div style="border-bottom:1px solid #0A0A0A;padding-bottom:14px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">The working session</span>
+          <h3 style="font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:8px 0 0;">Four questions we’ll bring to the call.</h3>
+        </div>
+        <sc-for list="{{ eprQuestions }}" as="q" hint-placeholder-count="4">
+          <div style="border-bottom:1px solid #C8C4BB;padding:22px 0;">
+            <div style="display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#D64A1F;flex-shrink:0;">{{ q.num }}</span>
+              <div style="flex:1;min-width:260px;">
+                <p style="font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.4;color:#0A0A0A;margin:0;">{{ q.text }}</p>
+                <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:8px 0 0;max-width:62ch;">{{ q.why }}</p>
+                <sc-if value="{{ q.c.showNote }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:12px;border-left:2px solid #0A0A0A;padding-left:12px;max-width:62ch;">
+                    <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;">{{ q.c.note }}</p>
+                    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:6px 0 0;">Your answer · on the record</p>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ q.c.editing }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;max-width:62ch;">
+                    <textarea value="{{ eprDraft }}" onChange="{{ onEprDraftChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:14px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
+                    <div style="display:flex;gap:8px;">
+                      <button onClick="{{ onEprSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save answer</button>
+                      <button onClick="{{ onEprCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
+                    </div>
+                  </div>
+                </sc-if>
+                <div data-print="hide" style="margin-top:12px;">
+                  <button onClick="{{ q.c.onNote }}" style="{{ q.c.noteStyle }}" style-hover="{{ q.c.noteHover }}">{{ q.c.noteLabel }}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+
+      <div style="margin-top:44px;border-left:3px solid #0A0A0A;padding:4px 0 4px 24px;max-width:66ch;">
+        <p style="font-size:15px;line-height:1.6;color:#6B6862;margin:0;">Two things are off this page on purpose. Raw project counts as a headline measure: your BU leaders have already ruled on those. And any talk of software: settle what to measure and what to decide, and the tooling conversation gets easy.</p>
+      </div>
+
+      <div data-print="hide" style="margin-top:40px;border-top:1px solid #C8C4BB;padding-top:28px;max-width:680px;">
+        <p style="font-size:16px;line-height:1.55;color:#0A0A0A;margin:0;">What would the people in your EPR room push back on first? Add it.</p>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <input value="{{ eprAddDraft }}" onChange="{{ onEprAddChange }}" placeholder="Add what this sketch missed" style="flex:1;min-width:240px;border:1px solid #0A0A0A;background:#fff;padding:12px 14px;font-size:15px;color:#0A0A0A;">
+          <button onClick="{{ onEprAdd }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:12px 20px;font-size:14px;">Add to the record</button>
+        </div>
+        <sc-if value="{{ hasEprAdds }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ eprAddsList }}" as="t" hint-placeholder-count="1">
+              <div style="border-left:2px solid #C8C4BB;padding-left:12px;">
+                <p style="font-size:14px;line-height:1.5;color:#0A0A0A;margin:0;">{{ t.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <div data-print="hide" style="margin-top:56px;border-top:1px solid #C8C4BB;padding-top:24px;display:flex;justify-content:flex-end;">
+        <button onClick="{{ goClose }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:14px 24px;font-size:15px;font-weight:500;" style-hover="{{ btnDarkHover }}">Continue to the close</button>
       </div>
     </main>
   </sc-if>
@@ -343,7 +590,7 @@
   <sc-if value="{{ flags.close }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="Close" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
       <div style="border-bottom:1px solid #0A0A0A;padding-bottom:24px;max-width:64ch;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Close · the sixth lock</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Close · the seventh lock</span>
         <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;max-width:24ch;">Where these go from here. (Nowhere, without you.)</h2>
       </div>
 
@@ -439,7 +686,7 @@
   <footer data-print="hide" style="border-top:1px solid #0A0A0A;">
     <div style="max-width:1180px;margin:0 auto;padding:24px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
       <div style="border-left:3px solid #D64A1F;padding:4px 0 4px 16px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">v1 · prepared after our July 14 conversation · Dark Horse Works · Demand Discovery</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">v2 · the EPR blueprint added July 2026 · Dark Horse Works · Demand Discovery</span>
       </div>
       <button onClick="{{ onReset }}" style="background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">Reset session</button>
     </div>
@@ -450,9 +697,58 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D64A1F&quot;,&quot;options&quot;:[&quot;#D64A1F&quot;,&quot;#B8593E&quot;,&quot;#0A0A0A&quot;],&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   KEY = 'dhw.scoreboard.v1.2026-07';
-  SURF = ['engage', 'listen', 'bridge', 'essay1', 'essay2', 'close'];
+  SURF = ['engage', 'listen', 'bridge', 'essay1', 'essay2', 'blueprint', 'close'];
   E1_IDS = Array.from({ length: 20 }, (_, i) => 'e1p' + (i + 1));
   E2_IDS = Array.from({ length: 17 }, (_, i) => 'e2p' + (i + 1));
+
+  EPR_AGENDA = [
+    { id: 'ea1', num: '01', time: '5 min', title: 'Portfolio health headline', serves: 'Decision 1', body: 'One slide. Better, worse, or no change across the four domains below, shown as trend arrows against last quarter. The direction answer lands first, before anything else gets discussed.' },
+    { id: 'ea2', num: '02', time: '15 min', title: 'Upcoming risks and exceptions', serves: 'Decision 2', body: 'What\u2019s coming, by exception only: projects and product lines trending toward trouble, supplier and obsolescence exposure, compliance-linked risk. History stays in the appendix.' },
+    { id: 'ea3', num: '03', time: '15 min', title: 'Capacity and margin improvement', serves: 'Decision 3', body: 'How much sustaining capacity is spent keeping the lights on, how much is free for proactive margin work, and what that means for taking on more. The value-creation conversation.' },
+    { id: 'ea4', num: '04', time: '15 min', title: 'Decisions needed from leadership', serves: 'All three', hot: true, body: 'Explicit asks: where leadership support, reprioritization, or resource arbitration is required. Leaders attend because decisions get made in this room. This item is what makes the review un-pausable.' },
+    { id: 'ea5', num: '05', time: '10 min', title: 'What\u2019s changing in how we measure', serves: 'The destination', body: 'The roadmap toward financial measures, reported quarterly: which data linkage gained ground, which new signal came online. Leadership watches the scoreboard improve on a schedule.' }
+  ];
+  EPR_DOMAINS = [
+    { key: 'A', label: 'A \u00b7 Direction and delivery', q: '\u201cAre we getting better?\u201d', serves: 'Answers decision 1', kpis: [
+      { id: 'ka1', name: 'Portfolio completion velocity', serves: 'Decision 1', now: true, body: 'Completed against newly opened, trended over trailing quarters. Whether the portfolio is gaining ground or losing it.' },
+      { id: 'ka2', name: 'Aging and backlog trend', serves: 'Decision 1', now: true, body: 'The share of the portfolio past its expected cycle time, and whether that tail is growing.' },
+      { id: 'ka3', name: 'Cycle time by project class', serves: 'Decision 1', now: true, body: 'Pace within each class of work, so a ginormous project and a small one stop counting the same. Reachable wherever project dates are clean.' },
+      { id: 'ka4', name: 'Recurrence rate', serves: 'Decision 1', now: true, build: true, body: 'Sustaining issues that come back after being closed. A strain signal that hides inside counts.' }
+    ] },
+    { key: 'B', label: 'B \u00b7 Risk and anticipation', q: '\u201cWhat\u2019s coming?\u201d', serves: 'Answers decision 2', kpis: [
+      { id: 'kb1', name: 'At-risk project exposure', serves: 'Decision 2', now: true, build: true, body: 'Which projects are trending to miss, weighted by what they would hit rather than by how many they are.' },
+      { id: 'kb2', name: 'Supplier and obsolescence exposure', serves: 'Decision 2', now: true, body: 'Concentration risk and the last-time-buy horizon. The classic slow fire.' },
+      { id: 'kb3', name: 'Compliance-linked risk', serves: 'Decision 2', now: true, body: 'Open CAPAs, aging deviations, recurring NCRs tied to the portfolio. Leading indicators of strain.' },
+      { id: 'kb4', name: 'Absorbed-impact watch', serves: 'Decision 2', build: true, body: 'Logged coping: expedites, exclude-and-ship, cross-training around a down line. Read as early warning, because quiet is what good coping produces.' }
+    ] },
+    { key: 'C', label: 'C \u00b7 Capacity and value', q: '\u201cCan we take on more?\u201d', serves: 'Answers decision 3', kpis: [
+      { id: 'kc1', name: 'Reactive vs. proactive load split', serves: 'Decision 3', now: true, build: true, body: 'The share of capacity consumed by keep-the-lights-on work against the share free for improvement. The headline behind the capacity decision.' },
+      { id: 'kc2', name: 'Margin-improvement pipeline', serves: 'Decision 3', build: true, body: 'Improvement projects in flight and queued, so the value-creation story has a forward book.' },
+      { id: 'kc3', name: 'Realized margin improvement', serves: 'Decision 3', build: true, body: 'Delivered savings from completed sustaining work. The financial bridge starts here.' }
+    ] }
+  ];
+  EPR_FIN_LABEL = 'Financial destination \u00b7 cost of sustaining and impacted-SKU revenue at risk';
+  EPR_QUESTIONS = [
+    { id: 'eq1', num: 'Q1', short: 'The BU dashboard', text: 'Which BU is building its own dashboard, what does it track, and can we see it?', why: 'A live example of what a BU actually wants. Aligning to it beats competing with it.' },
+    { id: 'eq2', num: 'Q2', short: 'The EPR room', text: 'Who sits in the quarterly EPR room?', why: 'BU sustaining directors, shared-service leaders, CVPs? The set above gets rebuilt backward from who decides there.' },
+    { id: 'eq3', num: 'Q3', short: 'The leadership note', text: 'When does the \u201cwhat to expect from the quarterly EPR\u201d note need to reach leadership?', why: 'That date sets the pace for everything above.' },
+    { id: 'eq4', num: 'Q4', short: 'Impacted-SKU data', text: 'How close is any one BU to having impacted-SKU data?', why: 'The nearest one proves the financial linkage first. The rest follow.' }
+  ];
+  eprIds() {
+    const out = this.EPR_AGENDA.map((a) => a.id);
+    this.EPR_DOMAINS.forEach((d) => d.kpis.forEach((k) => out.push(k.id)));
+    out.push('kfin');
+    this.EPR_QUESTIONS.forEach((q) => out.push(q.id));
+    return out;
+  }
+  eprLabel(id) {
+    const a = this.EPR_AGENDA.find((x) => x.id === id);
+    if (a) return 'Agenda ' + a.num + ' \u00b7 ' + a.title;
+    const q = this.EPR_QUESTIONS.find((x) => x.id === id);
+    if (q) return q.num + ' \u00b7 ' + q.short;
+    for (const d of this.EPR_DOMAINS) { const k = d.kpis.find((x) => x.id === id); if (k) return 'KPI \u00b7 ' + k.name; }
+    return this.EPR_FIN_LABEL;
+  }
 
   state = this.load();
 
@@ -460,7 +756,7 @@ class Component extends DCLogic {
     const d = this.defaults();
     try {
       const s = JSON.parse(localStorage.getItem(this.KEY));
-      if (s && s.v === d.v) return Object.assign({}, d, s, { editId: null, editDraft: '' });
+      if (s && s.v === d.v) return Object.assign({}, d, s, { editId: null, editDraft: '', eprEditId: null, eprDraft: '' });
     } catch (e) {}
     return d;
   }
@@ -479,6 +775,7 @@ class Component extends DCLogic {
       bridgeExp: { e1: false, e2: false },
       flagMode: false,
       essayFlags: {},
+      eprReact: {}, eprAdds: [], eprEditId: null, eprDraft: '', eprAddDraft: '',
       listen: [
         { id: 'l1', tag: 'We heard', headline: 'You solved the first problem yourself.', face: 'Two weeks of doing month-end yourself solved most of what your first email described. It cleared the way for the real conversation.', correction: '', status: '' },
         { id: 'l2', tag: 'We heard', headline: 'The real ask: the scoreboard.', face: '\u201cWhere I think I need the real help is around the scoreboard. How do we measure success?\u201d You asked it twice. Everything past this card is our answer.', correction: '', status: '' },
@@ -509,7 +806,7 @@ class Component extends DCLogic {
       if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
       const t = ev.target;
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
-      if (ev.key >= '1' && ev.key <= '6') { this.go(this.SURF[parseInt(ev.key, 10) - 1]); ev.preventDefault(); }
+      if (ev.key >= '1' && ev.key <= '7') { this.go(this.SURF[parseInt(ev.key, 10) - 1]); ev.preventDefault(); }
     };
     window.addEventListener('keydown', this._onKey);
   }
@@ -575,6 +872,36 @@ class Component extends DCLogic {
   }
   toggleCaseFlag(id) { this.update((s) => ({ cases: s.cases.map((c) => c.id === id ? Object.assign({}, c, { fav: !c.fav }) : c) })); }
 
+  // ---- blueprint ----
+  eprToggle(id) {
+    this.update((s) => {
+      const r = Object.assign({}, s.eprReact);
+      const cur = r[id] || {};
+      r[id] = Object.assign({}, cur, { s: cur.s === 'lands' ? '' : 'lands' });
+      return { eprReact: r };
+    });
+  }
+  eprOpenNote(id) {
+    const cur = (this.state.eprReact || {})[id] || {};
+    this.setState({ eprEditId: id, eprDraft: cur.n || '' });
+  }
+  eprCancelNote() { this.setState({ eprEditId: null, eprDraft: '' }); }
+  eprSaveNote() {
+    const { eprEditId: id, eprDraft: d } = this.state;
+    const txt = (d || '').trim();
+    if (!txt) { this.eprCancelNote(); return; }
+    this.update((s) => {
+      const r = Object.assign({}, s.eprReact);
+      r[id] = Object.assign({}, r[id] || {}, { n: txt });
+      return { eprReact: r, eprEditId: null, eprDraft: '' };
+    });
+  }
+  eprAdd() {
+    const txt = (this.state.eprAddDraft || '').trim();
+    if (!txt) return;
+    this.update((s) => ({ eprAdds: (s.eprAdds || []).concat([txt]), eprAddDraft: '' }));
+  }
+
   // ---- record ----
   recordEntries() {
     const s = this.state;
@@ -588,6 +915,13 @@ class Component extends DCLogic {
     const flagText = (ids, label) => ids.forEach((id) => { if (s.essayFlags[id]) out.push({ kind: label, text: '\u201c' + s.essayFlags[id] + '\u201d' }); });
     flagText(this.E1_IDS, 'Essay I flag');
     flagText(this.E2_IDS, 'Essay II flag');
+    this.eprIds().forEach((id) => {
+      const r = (s.eprReact || {})[id];
+      if (!r) return;
+      if (r.s === 'lands') out.push({ kind: 'Blueprint affirmed', text: this.eprLabel(id) });
+      if (r.n) out.push({ kind: id.indexOf('eq') === 0 ? 'Blueprint answer' : 'Blueprint note', text: this.eprLabel(id) + ' \u00b7 \u201c' + r.n + '\u201d' });
+    });
+    (s.eprAdds || []).forEach((t) => out.push({ kind: 'Blueprint added', text: t }));
     s.cases.forEach((c) => { if (c.fav) out.push({ kind: 'Case flag', text: c.tag + ' \u00b7 ' + c.title }); });
     return out;
   }
@@ -616,17 +950,17 @@ class Component extends DCLogic {
     const MONO = "'JetBrains Mono',monospace";
     const flags = {
       engage: s.surface === 'engage', listen: s.surface === 'listen', bridge: s.surface === 'bridge',
-      essay1: s.surface === 'essay1', essay2: s.surface === 'essay2', close: s.surface === 'close', cases: s.surface === 'cases'
+      essay1: s.surface === 'essay1', essay2: s.surface === 'essay2', blueprint: s.surface === 'blueprint', close: s.surface === 'close', cases: s.surface === 'cases'
     };
 
-    const labels = { engage: 'Engage', listen: 'Listen', bridge: 'Bridge', essay1: 'Essay I', essay2: 'Essay II', close: 'Close' };
+    const labels = { engage: 'Engage', listen: 'Listen', bridge: 'Bridge', essay1: 'Essay I', essay2: 'Essay II', blueprint: 'Blueprint', close: 'Close' };
     const navItems = this.SURF.map((key, i) => {
       const active = s.surface === key;
       return {
         key, label: labels[key], num: String(i + 1).padStart(2, '0'),
         onClick: () => this.go(key),
-        style: { background: 'none', border: 'none', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: '7px', color: active ? '#0A0A0A' : '#6B6862', borderBottom: active ? '2px solid ' + ACCENT : '2px solid transparent', transition: 'color 150ms ease' },
-        hoverStyle: { color: '#0A0A0A' },
+        style: { background: 'none', border: 'none', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: '7px', color: key === 'blueprint' ? ACCENT : (active ? '#0A0A0A' : '#6B6862'), borderBottom: active ? '2px solid ' + ACCENT : '2px solid transparent', transition: 'color 150ms ease' },
+        hoverStyle: { color: key === 'blueprint' ? ACCENT : '#0A0A0A' },
         numStyle: { fontFamily: MONO, fontSize: '10px', color: active ? ACCENT : '#C8C4BB' }
       };
     });
@@ -707,7 +1041,7 @@ class Component extends DCLogic {
 
     // ---- record ----
     const entries = this.recordEntries();
-    const kindColors = { 'Affirmed': ACCENT, 'Corrected': '#0A0A0A', 'Added': '#0A0A0A', 'Skipped': '#6B6862', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A' };
+    const kindColors = { 'Affirmed': ACCENT, 'Corrected': '#0A0A0A', 'Added': '#0A0A0A', 'Skipped': '#6B6862', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Blueprint affirmed': ACCENT, 'Blueprint note': '#0A0A0A', 'Blueprint answer': ACCENT, 'Blueprint added': '#0A0A0A', 'Case flag': '#0A0A0A' };
     const recordLines = entries.map((r) => ({ kind: r.kind, text: r.text, kindColor: kindColors[r.kind] || '#6B6862' }));
 
     // ---- cases ----
@@ -721,10 +1055,57 @@ class Component extends DCLogic {
       flagHover: c.fav ? {} : ghostHover
     }));
 
+    // ---- blueprint vals ----
+    const eprReact = s.eprReact || {};
+    const eprCtl = (id, isQ) => {
+      const r = eprReact[id] || {};
+      const affirmed = r.s === 'lands';
+      const noted = !!r.n;
+      const editing = s.eprEditId === id;
+      return {
+        editing,
+        showNote: noted && !editing,
+        note: r.n || '',
+        onAffirm: () => this.eprToggle(id),
+        onNote: () => this.eprOpenNote(id),
+        affirmLabel: affirmed ? 'Affirmed' : 'This lands',
+        noteLabel: isQ ? (noted ? 'Edit answer' : 'Answer') : (noted ? 'Noted' : 'Not quite'),
+        affirmStyle: { background: affirmed ? ACCENT : 'none', color: affirmed ? '#fff' : '#4A4A4A', border: '1px solid ' + (affirmed ? ACCENT : '#C8C4BB'), padding: '6px 13px', fontSize: '12px', fontFamily: MONO, whiteSpace: 'nowrap' },
+        affirmHover: affirmed ? { background: '#b83d16' } : ghostHover,
+        noteStyle: { background: noted ? '#0A0A0A' : 'none', color: noted ? '#F2F0EB' : '#6B6862', border: '1px solid ' + (noted ? '#0A0A0A' : '#C8C4BB'), padding: '6px 13px', fontSize: '12px', fontFamily: MONO, whiteSpace: 'nowrap' },
+        noteHover: noted ? { background: '#1A1A1A' } : ghostHover
+      };
+    };
+    const eprAgenda = this.EPR_AGENDA.map((a) => {
+      const r = eprReact[a.id] || {};
+      return {
+        num: a.num, time: a.time, title: a.title, body: a.body, serves: a.serves,
+        rowStyle: a.hot
+          ? { borderBottom: '1px solid #C8C4BB', borderLeft: '3px solid ' + ACCENT, background: '#E6E3DC', padding: '24px 20px' }
+          : { borderBottom: '1px solid #C8C4BB', borderLeft: '3px solid transparent', padding: '24px 20px' },
+        numColor: r.s === 'lands' ? ACCENT : (a.hot ? '#0A0A0A' : '#C8C4BB'),
+        c: eprCtl(a.id)
+      };
+    });
+    const eprDomains = this.EPR_DOMAINS.map((d) => ({
+      label: d.label, q: d.q, serves: d.serves,
+      kpis: d.kpis.map((k) => ({
+        name: k.name, body: k.body, serves: k.serves,
+        hasNow: !!k.now, hasBuild: !!k.build, hasArrow: !!(k.now && k.build),
+        bg: (eprReact[k.id] || {}).s === 'lands' ? '#E6E3DC' : '#fff',
+        c: eprCtl(k.id)
+      }))
+    }));
+    const finC = eprCtl('kfin');
+    const eprQuestions = this.EPR_QUESTIONS.map((q) => ({ num: q.num, text: q.text, why: q.why, c: eprCtl(q.id, true) }));
+    const eprIds = this.eprIds();
+    const eprReacted = eprIds.filter((id) => { const r = eprReact[id]; return r && (r.s || r.n); }).length;
+    const eprAddsList = (s.eprAdds || []).map((t) => ({ text: t }));
+
     return Object.assign({
       flags, navItems, progressPct, casesLinkStyle,
       goEngage: () => this.go('engage'), goListen: () => this.go('listen'), goBridge: () => this.go('bridge'),
-      goEssay1: () => this.go('essay1'), goEssay2: () => this.go('essay2'), goClose: () => this.go('close'), goCases: () => this.go('cases'),
+      goEssay1: () => this.go('essay1'), goEssay2: () => this.go('essay2'), goBlueprint: () => this.go('blueprint'), goClose: () => this.go('close'), goCases: () => this.go('cases'),
       goCasesLink: (e) => { e.preventDefault(); this.go('cases'); },
       btnDarkHover, ghostHover, ghostHoverG,
       // listen
@@ -765,6 +1146,17 @@ class Component extends DCLogic {
       onDownloadRecord: () => this.downloadRecord(),
       // cases
       caseCards, caseFlagCount: favCount, hasCaseFlags: favCount > 0,
+      // blueprint
+      eprAgenda, eprDomains, finC, eprQuestions,
+      eprProgress: eprReacted + ' of ' + eprIds.length,
+      eprDraft: s.eprDraft,
+      onEprDraftChange: (e) => this.setState({ eprDraft: e.target.value }),
+      onEprSave: () => this.eprSaveNote(),
+      onEprCancel: () => this.eprCancelNote(),
+      eprAddDraft: s.eprAddDraft,
+      onEprAddChange: (e) => this.setState({ eprAddDraft: e.target.value }),
+      onEprAdd: () => this.eprAdd(),
+      hasEprAdds: eprAddsList.length > 0, eprAddsList,
       // footer
       onReset: () => this.reset()
     }, lf, lx);
