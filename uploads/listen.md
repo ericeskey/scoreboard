@@ -1,0 +1,56 @@
+# LISTEN: What we heard (client-ready source for Claude Design)
+
+PAGE INTENT: Every voice in the record, acknowledged in their own words. Matt can show this page to any respondent and they should feel accurately heard. Each CARD is affirmable/correctable ("This is right" / "Not quite"). Each EXPAND carries the fuller context.
+
+PAGE HEADLINE: What we heard. From two conversations, one thread, and two survey waves.
+PAGE SUBTEXT: Eight weeks of your organization's own words about the EPR, compiled and organized. Affirm what lands. Correct what doesn't. Every reaction joins the record.
+
+---
+
+## CARD 1: Matt Becker: the proposal that reversed itself on evidence
+BODY: On June 16, Matt proposed restarting the monthly EPR. The feedback said stop it. Matt recommended stopping it. The quarterly is not a fallback. It is the survivor of an honest test.
+EXPAND: Matt's June 16 note to BU and value-stream leaders proposed restarting the monthly EPR in Q3 with an updated structure. Every BU sustaining engineering leader and PMO leader who responded said discontinue. Matt compiled two waves of structured feedback, read the answer honestly, and recommended to Harsh that the pause continue with no plans to restart. Harsh accepted all five recommendations. The direction that survived: interim reporting while automation builds, a quarterly leadership review with agenda and format to be designed, business-impact KPIs defined after the data foundation exists, and the monthly reassessed only when meaningful data supports it.
+
+## CARD 2: Harsh Kachhy: the evidence bar
+BODY: "Given 700+ active projects and long enough sample size on pause (6 months), there is sufficient real-world evidence to assess if this needs to be resumed, rescoped, or cancelled."
+EXPAND: Harsh treated the six-month pause as a natural experiment and insisted the organization read it that way. His first question was the falsifying one: what have we missed as a result? What risks, friction, or extra work have we incurred that the meeting would have avoided? He also set the communication standard for the transition: pair the pause with the forward path. And he set the expectation for what a quarterly should show: trends, risks, resource bottlenecks, with financial measures on a visible path. The same evidence bar he applied to the monthly will apply to whatever the quarterly claims to measure.
+
+## CARD 3: Jake Newman: the question that started it all
+BODY: Are we getting better, getting worse, or just keeping up? Asked when the sustaining pillar was created. Still unanswered.
+EXPAND: When Jake Newman broke sustaining off as its own pillar, this was the question he gave it. The organization added roughly 70 resources and millions in headcount three to four years ago to close the gap between project additions and completions. In Matt's words, "the disparity between completions and additions... we were never really closing the gap." The question has never been brought to a conclusion because the measures available (project counts) cannot answer a direction question. Decision 1 of the proposed quarterly is Jake's question, finally given an instrument built to answer it.
+
+## CARD 4: Ron Aplin: the dissent that specifies the design
+BODY: "The problem still exist for cross BU and that is what needs to be solved... This requires some leaders to lead."
+EXPAND: Ron (VP, Ops Quality and Quality Systems) was the only executive respondent who said something should exist rather than nothing. His full recommendation: focus on cross-BU and enterprise-level issues with executive leaders. Read carefully, Ron is not asking for the old meeting back. He is describing a meeting that has never existed: a forum where enterprise-level problems get decided by the people with authority to decide them, rather than absorbed at the director level or left unowned. His dissent is the clearest specification anyone has written for what the quarterly must be.
+
+## CARD 5: Matthew James: the executive spec
+BODY: Value exists "for the high priority items where there is a material business risk (or opportunity) or agreement is needed on resourcing or investment." Quarterly, with extraordinary meetings when needed.
+EXPAND: Matthew James (President, Global Interventional) answered the June survey with what amounts to a design specification: the forum is worth attending where there is a high degree of business risk or opportunity requiring decision or agreement among stakeholders. His recommended cadence: quarterly, with the option to call extraordinary meetings if something arises between them. Content gate, cadence, and exception valve, specified by a sitting president before the design work began.
+
+## CARD 6: Sara Eslinger: the landing shape and the template
+BODY: Monthly dashboard report-outs plus a quarterly strategic overview. And: "INTV is doing some interesting things with their portfolio. Can you create the same views for the rest of the organization?"
+EXPAND: Sara (VP, Design Assurance and Product Quality Assurance) recommended the exact two-part architecture the accepted recommendations adopted: continuous dashboard visibility for routine reporting, and a quarterly strategic meeting for what needs discussion. She also nominated Interventional's Power BI dashboard as the internal template worth extending across the organization. She noted she appreciated the resource-loading attempts in the old monthly. The effort was seen even where the format failed.
+
+## CARD 7: Andrej Baranek: the test the design must pass
+BODY: "I honestly struggle to understand why do we need the Sustaining EPR meeting in addition to existing BU Sustaining Portfolio Reviews."
+EXPAND: Andrej (Global Head of Manufacturing) put the incremental-value challenge in writing twice: why does an enterprise forum need to exist above BU reviews? Perhaps consistent reporting expectations across BU reviews would serve the same purpose. His challenge produced the most important number in the thread. Matt's answer: 24 sustaining projects currently impact two or more RemainCo BUs, and 14 impact both RemainCo and NewCo. That bounded population, roughly 5% of the 700+ project portfolio, is what only an enterprise room can govern. Andrej also asked the sharp question about SMT projects: fully funded footprint and VI projects still draw BU sustaining engineering resources, so where do they sit in prioritization? Any quarterly design that cannot answer Andrej in one breath is not ready.
+
+## CARD 8: Nishith Desai: the prioritization crux
+BODY: "The current challenge is that we want to work on all the projects. If so, what is the point of prioritization?"
+EXPAND: Nishith (VP, Regulatory Affairs) named the gap that makes prioritization frameworks theatrical: without a capacity gate, priority labels change nothing because everything stays active. He suggested explicit guidelines (for example, Priority A, B, and C projects are actively worked; others wait). He also asked for consistency in BU-level portfolio reviews: clear guidelines on how often, who attends, and what gets reviewed, noting "I don't believe it is consistent at all BUs at this time." And he improved the prioritization framework concretely: generalize the CAPA category beyond design CAPAs, and add a market-expansion category for launching existing devices in new countries. His capacity question is Decision 3 of the proposed quarterly in its sharpest form.
+
+## CARD 9: Cory O'Rorke: the honest counter-story
+BODY: The Lidocaine crisis absorbed leadership attention, and a liquid-adhesive decision quietly waited for months. "We could have started that months ago."
+EXPAND: Cory (Sr Manager, Sustaining Engineering, ASK) reported no cross-BU issues from the pause, and then told the one story in the record of a real absorbed cost: while leadership dealt with the Lidocaine shortage, conversations about discontinuing a liquid adhesive were delayed for months to avoid piling bad news on customers. His honest read: the old EPR would not have fixed it, because leadership attention itself was consumed. The cost was real either way, and no instrument caught it. He also named a visibility asymmetry: ASK sees its own portfolio and the multi-BU intakes but is in the dark on other BUs' single-BU projects. The value of the old monthly, for him, was seeing where ASK stood relative to the other BUs.
+
+## CARD 10: Ken Whitley and the directors: the machinery that works
+BODY: No cross-BU issues, "largely because we have Hannah's group managing cross-BU projects... we create the forum when needed."
+EXPAND: Ken (Director, Sustaining Engineering, Vascular) described why the pause caused no visible pain: Hannah Papes's group (Global Portfolio Management and Strategy) manages cross-BU projects and calls project-level meetings to work out interdependencies as needed. Ad-hoc forums get created when situations arise. He also pointed at the automation dividend: the PMO is perfecting SmartSheet auto-generated reporting on a set of metrics. The directors' consensus across INTV, Vascular, and Surgical was uniform: BU reviews cover BU priorities, the Multi-BU Intake meeting covers the rest, and nobody wants another meeting. Jeff Yaeger's words: "I would prefer a focused BU review over a general Enterprise discussion." The signal is clear: directors should feed a dashboard, not attend a forum.
+
+## CARD 11: Rose and the command center: where the dollars live
+BODY: Catalog SKUs are not enough. IPNs are the key to getting financial data from SAP.
+EXPAND: The director of the global supply chain command center (a dedicated analytics group with a full SAP tap and Power BI analysts) identified the technical key to the financial measures leadership wants: internal part numbers underneath the catalog SKUs. SKU-per-project lists exist only partially today (Interventional's caps at 100 SKUs; some vascular projects touch thousands). An IPN team and an IPN owner exist, and a prior project to connect IPN inventory, regulatory, and completion data was put on hold for complexity rather than killed. Surgical's SKU-level data is already in hand, making it the closest candidate for proving the financial linkage first.
+
+## CARD 12: What we heard underneath the words
+BODY: The "no issues" consensus is evidence that your coping machinery works. It is not evidence about what happens above it.
+EXPAND: Reading the survey structurally: Vascular reports no issues because Hannah's group absorbs cross-BU problems. Surgical reports none because it has few cross-BU projects. The one absorbed cost in the record (Cory's Lidocaine story) surfaced only because he was honest enough to tell it. The organization is good at absorbing problems below the executive line. That is a strength worth keeping. It also means the survey says nothing about the problems the coping layer cannot absorb: cross-BU priority conflicts, capacity versus margin-mandate trade-offs, systemic barriers requiring a common approach. Those are Ron's territory, and they are what a quarterly decision forum exists for. The monthly died because it demanded nothing from leaders. The design consequence: the quarterly must never be positioned as restored visibility (nobody misses it). It earns existence only by deciding what nothing else can decide.
