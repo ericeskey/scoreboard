@@ -862,6 +862,226 @@
     </main>
   </sc-if>
 
+  <!-- ================= KICKOFF ================= -->
+  <sc-if value="{{ flags.kickoff }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="Kickoff" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:24px;">
+        <div style="max-width:64ch;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Kickoff · the working surface</span>
+          <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;">The plan for the first three days, what we need in hand, and the decisions the room owns.</h2>
+          <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:64ch;">Proposed: the week of August 10, at the command center in Ireland. This page is logistics with reasons. It is a draft to be corrected, and the correction is the point.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0A0A0A;">{{ kickProgress }}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6862;margin-top:4px;">decisions reacted</div>
+        </div>
+      </div>
+
+      <section style="margin-top:56px;">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:12px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">01</span>
+          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">The first three days</h3>
+          <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;">Week of August 10 · the command center, Ireland</span>
+        </div>
+
+        <div style="margin-top:24px;border:1px solid #C8C4BB;background:#E6E3DC;padding:22px;max-width:820px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Before we arrive</span>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ kickPrep }}" as="p" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="width:11px;height:11px;border:1px solid #0A0A0A;flex-shrink:0;margin-top:6px;"></span>
+                <p style="font-size:15px;line-height:1.55;color:#0A0A0A;margin:0;max-width:62ch;">{{ p.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+          <sc-for list="{{ kickDays }}" as="d" hint-placeholder-count="3">
+            <article style="border:1px solid #0A0A0A;background:{{ d.bg }};padding:24px;display:flex;flex-direction:column;gap:18px;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;">
+                <div style="display:flex;align-items:baseline;gap:12px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#D64A1F;">{{ d.num }}</span>
+                  <h4 style="font-size:19px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;margin:0;">{{ d.title }}</h4>
+                </div>
+                <sc-if value="{{ d.hasTag }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:3px 8px;">{{ d.tag }}</span>
+                </sc-if>
+              </div>
+              <div style="border-top:1px solid #C8C4BB;padding-top:14px;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">{{ d.amHead }}</span>
+                <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+                  <sc-for list="{{ d.amItems }}" as="i" hint-placeholder-count="2">
+                    <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;">{{ i.text }}</p>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="border-top:1px solid #C8C4BB;padding-top:14px;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">{{ d.pmHead }}</span>
+                <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+                  <sc-for list="{{ d.pmItems }}" as="i" hint-placeholder-count="2">
+                    <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;">{{ i.text }}</p>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="margin-top:auto;border-left:3px solid #D64A1F;padding:2px 0 2px 14px;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#D64A1F;">What comes out</span>
+                <p style="font-family:'Instrument Serif',Georgia,serif;font-size:17px;line-height:1.4;color:#0A0A0A;margin:6px 0 0;">{{ d.out }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px 32px;flex-wrap:wrap;font-size:13px;line-height:1.55;color:#6B6862;max-width:980px;">
+          <span>Travel per the statement of work: pre-approved, passed through at cost.</span>
+          <span>If day 3 cannot hold, its content becomes the first two remote working sessions. Days 1 and 2 are the essential core.</span>
+          <span>Evenings unscheduled. Travel days protected.</span>
+        </div>
+      </section>
+
+      <section style="margin-top:72px;">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:12px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">02</span>
+          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">What we need in hand</h3>
+        </div>
+        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:16px 0 0;max-width:66ch;">Everything Phase 1 needs as one-time extracts. No cleanup, no formatting, no builds. Extracts in hand before Ireland means the kickoff is spent confirming what fields mean, not waiting on exports.</p>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+          <sc-for list="{{ kickSnaps }}" as="k" hint-placeholder-count="8">
+            <article style="border:1px solid #0A0A0A;border-left:{{ k.borderLeft }};background:{{ k.bg }};padding:22px;display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:baseline;gap:12px;">
+                <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;line-height:1;color:{{ k.numColor }};">{{ k.num }}</span>
+                <h4 style="font-size:16px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">{{ k.name }}</h4>
+              </div>
+              <p style="font-size:13.5px;line-height:1.55;color:#4A4A4A;margin:0;">{{ k.body }}</p>
+              <sc-if value="{{ k.isTrace }}" hint-placeholder-val="{{ false }}">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#D64A1F;">The financial-path test</span>
+              </sc-if>
+              <div style="margin-top:auto;border-top:1px solid #C8C4BB;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.04em;color:#6B6862;">{{ k.owner }}</span>
+                <span style="display:flex;gap:5px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">Requested</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">In flight</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">Received</span>
+                </span>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:24px;border:1px solid #0A0A0A;background:#E6E3DC;padding:24px;max-width:980px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Ground rules</span>
+          <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px;">
+            <sc-for list="{{ kickRules }}" as="r" hint-placeholder-count="4">
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;border-top:1px solid #C8C4BB;padding-top:10px;">{{ r.text }}</p>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:72px;">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:12px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">03</span>
+          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">The decisions the room owns</h3>
+          <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid #D64A1F;color:#D64A1F;padding:3px 9px;">Draft, for correction</span>
+        </div>
+        <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:66ch;">Draft, for correction. Every candidate measure gets mapped against this list: a measure that would not change any of these decisions is out, no matter how good its data.</p>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
+          <sc-for list="{{ kickDecisions }}" as="d" hint-placeholder-count="8">
+            <article style="border:1px dashed #0A0A0A;background:{{ d.bg }};padding:22px;display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:baseline;gap:12px;">
+                <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;line-height:1;color:{{ d.numColor }};">{{ d.num }}</span>
+                <h4 style="font-size:16px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">{{ d.title }}</h4>
+              </div>
+              <p style="font-size:13.5px;line-height:1.55;color:#4A4A4A;margin:0;">{{ d.body }}</p>
+              <sc-if value="{{ d.c.showNote }}" hint-placeholder-val="{{ false }}">
+                <div style="border-left:2px solid #0A0A0A;padding-left:12px;">
+                  <p style="font-size:13.5px;line-height:1.5;color:#0A0A0A;margin:0;">{{ d.c.note }}</p>
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:5px 0 0;">Your correction · on the record</p>
+                </div>
+              </sc-if>
+              <sc-if value="{{ d.c.editing }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                  <textarea value="{{ noteDraft }}" onChange="{{ onNoteChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:13.5px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
+                  <div style="display:flex;gap:8px;">
+                    <button onClick="{{ onNoteSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save</button>
+                    <button onClick="{{ onNoteCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
+                  </div>
+                </div>
+              </sc-if>
+              <div style="margin-top:auto;display:flex;gap:8px;border-top:1px solid #C8C4BB;padding-top:12px;flex-wrap:wrap;">
+                <button onClick="{{ d.c.onAffirm }}" style="{{ d.c.affirmStyle }}" style-hover="{{ d.c.affirmHover }}">{{ d.c.affirmLabel }}</button>
+                <button onClick="{{ d.c.onNote }}" style="{{ d.c.noteStyle }}" style-hover="{{ d.c.noteHover }}">{{ d.c.noteLabel }}</button>
+              </div>
+            </article>
+          </sc-for>
+
+          <article style="border:1px solid #C8C4BB;background:#E6E3DC;padding:22px;display:flex;flex-direction:column;gap:10px;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6862;">What the room does not own</span>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ kickNotOwned }}" as="n" hint-placeholder-count="3">
+                <p style="font-size:13.5px;line-height:1.55;color:#6B6862;margin:0;border-top:1px solid #C8C4BB;padding-top:10px;">{{ n.text }}</p>
+              </sc-for>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top:32px;border-top:1px solid #C8C4BB;padding-top:24px;max-width:680px;">
+          <p style="font-size:16px;line-height:1.55;color:#0A0A0A;margin:0;">A decision the room owns that this list missed? Add it.</p>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+            <input value="{{ kickAddDraft }}" onChange="{{ onKickAddChange }}" placeholder="Add a decision the quarterly room owns" style="flex:1;min-width:240px;border:1px solid #0A0A0A;background:#fff;padding:12px 14px;font-size:15px;color:#0A0A0A;">
+            <button onClick="{{ onKickAdd }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:12px 20px;font-size:14px;">Add to the record</button>
+          </div>
+          <sc-if value="{{ hasKickAdds }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ kickAddsList }}" as="t" hint-placeholder-count="1">
+                <div style="border-left:2px solid #C8C4BB;padding-left:12px;">
+                  <p style="font-size:14px;line-height:1.5;color:#0A0A0A;margin:0;">{{ t.text }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+
+      <section style="margin-top:72px;">
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:12px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">04</span>
+          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">How we’ll work</h3>
+        </div>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+          <article style="border:1px solid #0A0A0A;background:#fff;padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <h4 style="font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">The window</h4>
+            <p style="font-size:14px;line-height:1.55;color:#4A4A4A;margin:0;">The standing three-way overlap. Working hours stay afternoon-friendly in Ireland so follow-ups reach the US the same day.</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ kickZones }}" as="z" hint-placeholder-count="3">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid #C8C4BB;padding-top:8px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6B6862;">{{ z.label }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0A0A0A;">{{ z.hours }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </article>
+
+          <article style="border:1px solid #0A0A0A;background:#fff;padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <h4 style="font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">The loop</h4>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:#0A0A0A;">
+              <span>Snapshot</span><span style="color:#C8C4BB;">→</span><span>Mockup</span><span style="color:#C8C4BB;">→</span><span>React</span><span style="color:#C8C4BB;">→</span><span>Adjust</span>
+            </div>
+            <p style="font-size:14px;line-height:1.55;color:#4A4A4A;margin:0;">One structured feedback cycle per the statement of work. A weekly working session: 60 minutes in the early weeks, settling to 30.</p>
+          </article>
+
+          <article style="border:1px solid #0A0A0A;background:#E6E3DC;padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <h4 style="font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">Built once</h4>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.4;color:#0A0A0A;margin:0;">Discovery runs on snapshots so that what gets built at the end gets built once, from a confirmed baseline.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
   <!-- ================= BRIDGE ================= -->
   <sc-if value="{{ flags.bridge }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="Bridge" style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vh,72px) clamp(20px,5vw,72px) 96px;">
@@ -1080,7 +1300,49 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D64A1F&quot;,&quot;options&quot;:[&quot;#D64A1F&quot;,&quot;#B8593E&quot;,&quot;#0A0A0A&quot;],&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
   KEY = 'dhw.scoreboard.v1.2026-07';
-  SURF = ['engage', 'listen', 'frame', 'crux', 'envision', 'commit', 'close'];
+  SURF = ['engage', 'listen', 'frame', 'crux', 'envision', 'commit', 'close', 'kickoff'];
+
+  KICK_PREP = [
+    'Snapshot requests issued as soon as we have a go; extracts in hand or in flight by travel day.',
+    'Decision inventory corrected by Matt on the Thursday call.',
+    'The 20-project trace sample list agreed: Matt picks a mix of BUs, sizes, and ages.'
+  ];
+  KICK_DAYS = [
+    { id: 'd1', num: 'Day 1', title: 'Terrain', tag: '', am: { h: 'Morning: orientation and decision frame', items: ['Command center walkthrough: how the room works, what it produces, for whom.', 'Working session, Matt and Eric: decision inventory final pass, and what the first quarterly must be able to decide.'] }, pm: { h: 'Afternoon: terrain sessions with the PBI developer', items: ['The systems walk: project record lifecycle, Planview anatomy, the INTV dashboard\u2019s data path.', 'Live checks against extracts already received.'] }, out: 'Systems map v0, and the trust foundation with the person who will build against our baseline.' },
+    { id: 'd2', num: 'Day 2', title: 'Snapshots at the source', tag: '', am: { h: 'Morning: extraction and semantics', items: ['Remaining snapshots pulled together, at the source, owners in the room.', 'Definition confirmation per field that matters: what it means, who fills it, when.'] }, pm: { h: 'Afternoon: the 20-project trace', items: ['Hand-trace projects end to end: record, impacted SKU, part number, SAP. Time each step, note each judgment call.', 'The financial path tested with evidence. Whatever fraction traces cleanly is the honest baseline.'] }, out: 'Snapshot set complete and confirmed, trace-sample results, and the raw material of reachability map v1.' },
+    { id: 'd3', num: 'Day 3', title: 'First-pass mapping', tag: 'Optional but recommended', am: { h: 'Morning: the twelve candidates against the terrain', items: ['Rapid pass per candidate: reachable now, reachable with a defined step, or blocked and why, with the PBI developer\u2019s read live.', 'Decision-inventory mapping started: which candidates inform which decisions.'] }, pm: { h: 'Afternoon: close-out', items: ['What we saw, what surprised us, what the mockup will show first.', 'Working rhythm confirmed on the standing three-way window.'] }, out: 'Reachability map skeleton, mockup v1 direction, and every week-1 output either done or in motion, days early.' }
+  ];
+  KICK_SNAPS = [
+    { id: 's1', num: '01', name: 'Planview extract, Interventional', body: 'All active and recently closed sustaining projects, all fields, as exported. Excel or CSV.', owner: 'Command center or the PBI developer' },
+    { id: 's2', num: '02', name: 'Interventional Power BI underlying tables', body: 'The data behind the eight dashboard pages: portfolio health, status updates, revenue continuity, geography expansion, cost improvement, issues, risks.', owner: 'The PBI developer, or the Power BI lead' },
+    { id: 's3', num: '03', name: 'Vascular project list', body: 'Current tracking files, whatever system and shape they are in.', owner: 'BU portfolio contact' },
+    { id: 's4', num: '04', name: 'Surgical project list', body: 'Same, plus newer versions of the impacted-SKU file already in hand.', owner: 'BU portfolio contact' },
+    { id: 's5', num: '05', name: 'Anesthesia and Emergency Medicine project list', body: 'The remaining RemainCo BU, same shape.', owner: 'BU portfolio contact' },
+    { id: 's6', num: '06', name: 'Intake records', body: 'A recent sample of intake requests, however they arrive, ideally three months\u2019 worth.', owner: 'Matt\u2019s team' },
+    { id: 's7', num: '07', name: 'Survey results', body: 'Both waves, full responses. Partially in hand; confirm the complete set.', owner: 'Matt\u2019s team' },
+    { id: 's8', num: '08', hot: true, name: 'The 20-project trace sample', body: 'Nothing to export: a list of 20 recent sustaining projects, mixed BUs and sizes, hand-traced from project record to impacted SKU to part number to SAP during the kickoff, with the people who know the systems in the room. This is how the financial path gets tested with evidence instead of opinion.', owner: 'Matt selects' }
+  ];
+  KICK_RULES = [
+    'One-time snapshots, not feeds. Nothing recurring, nothing built.',
+    'As-is beats cleaned-up. Blank fields, stale dates, and inconsistencies are findings, not embarrassments. They are what the reachability map is made of.',
+    'Handled under the confidentiality terms in place, returned or destroyed at engagement end, at Teleflex\u2019s direction.',
+    'Anything that cannot be extracted is itself useful to know early. Tell us what blocked it and that goes on the map too.'
+  ];
+  KICK_DECISIONS = [
+    { id: 'kd1', num: '01', title: 'Continue, pause, or kill', body: 'Which sustaining projects stop consuming resources.' },
+    { id: 'kd2', num: '02', title: 'Resource shifts across business units', body: 'Where constrained engineering and regulatory capacity moves next quarter, and at whose expense.' },
+    { id: 'kd3', num: '03', title: 'Escalation of absorbed cross-BU impact', body: 'When quiet coping stops being acceptable. The organization absorbs cross-BU problems well; the room decides what should no longer be absorbed.' },
+    { id: 'kd4', num: '04', title: 'Backfill and capacity commitments', body: 'Whether workload evidence justifies filling open roles or shifting scope instead.' },
+    { id: 'kd5', num: '05', title: 'Cost-improvement target commitment', body: 'Agreeing the annual target, and the gap-closing actions when the pipeline underruns it.' },
+    { id: 'kd6', num: '06', title: 'Obsolescence and supplier-risk posture', body: 'Which known time-bombs get funded proactively versus accepted as reactive risk.' },
+    { id: 'kd7', num: '07', title: 'Standard-setting', body: 'Whether a practice proven in one BU becomes the RemainCo standard, and on what schedule.' },
+    { id: 'kd8', num: '08', title: 'Prior-commitment accountability', body: 'Reviewing what the room decided last quarter and whether it happened. The item that makes the forum self-enforcing.' }
+  ];
+  KICK_NOT_OWNED = [
+    'Individual project management decisions. BU project leads own those.',
+    'Monthly status absorption. The dashboards own that.',
+    'Build and tooling choices. The build owner and IT own those, against the requirements baseline.'
+  ];
   OFF = ['bridge', 'essay1', 'essay2', 'cases'];
   E1_IDS = Array.from({ length: 20 }, (_, i) => 'e1p' + (i + 1));
   E2_IDS = Array.from({ length: 17 }, (_, i) => 'e2p' + (i + 1));
@@ -1247,6 +1509,7 @@ class Component extends DCLogic {
       cruxReact: {}, cruxAdds: [], cruxAddDraft: '',
       envReact: {},
       commitReact: {}, commitAdds: [], commitAddDraft: '',
+      kickReact: {}, kickAdds: [], kickAddDraft: '',
       exp: {},
       editId: null, editDraft: '', noteId: null, noteDraft: ''
     };
@@ -1261,7 +1524,7 @@ class Component extends DCLogic {
       if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
       const el = ev.target;
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
-      if (ev.key >= '1' && ev.key <= '7') { this.go(this.SURF[parseInt(ev.key, 10) - 1]); ev.preventDefault(); }
+      if (ev.key >= '1' && ev.key <= '8') { this.go(this.SURF[parseInt(ev.key, 10) - 1]); ev.preventDefault(); }
     };
     window.addEventListener('keydown', this._onKey);
   }
@@ -1407,6 +1670,12 @@ class Component extends DCLogic {
       if (r && r.n) push('Call answer', q.num + ' \u00b7 ' + q.short + ' \u00b7 \u201c' + r.n + '\u201d');
     });
     (s.eprAdds || []).forEach((t) => push('Envision added', t));
+    this.KICK_DECISIONS.forEach((d) => {
+      const r = rm('kickReact')[d.id] || {};
+      if (r.s === 'lands') push('Decision affirmed', d.num + ' \u00b7 ' + d.title);
+      if (r.n) push('Decision adjusted', d.num + ' \u00b7 ' + d.title + ' \u00b7 \u201c' + r.n + '\u201d');
+    });
+    (s.kickAdds || []).forEach((t) => push('Decision added', t));
     this.COMMITS.forEach((c) => {
       const r = rm('commitReact')[c.id] || {};
       if (r.s === 'lands') push('Commit affirmed', c.title);
@@ -1451,17 +1720,18 @@ class Component extends DCLogic {
       engage: s.surface === 'engage',
       listen: s.surface === 'listen', frame: s.surface === 'frame', crux: s.surface === 'crux',
       envision: s.surface === 'envision', commit: s.surface === 'commit', close: s.surface === 'close',
+      kickoff: s.surface === 'kickoff',
       bridge: s.surface === 'bridge', essay1: s.surface === 'essay1', essay2: s.surface === 'essay2', cases: s.surface === 'cases'
     };
 
-    const labels = { engage: 'Engage', listen: 'Listen', frame: 'Frame', crux: 'Crux', envision: 'Envision', commit: 'Commit', close: 'Close' };
+    const labels = { engage: 'Engage', listen: 'Listen', frame: 'Frame', crux: 'Crux', envision: 'Envision', commit: 'Commit', close: 'Close', kickoff: 'Kickoff' };
     const navItems = this.SURF.map((key, i) => {
       const active = s.surface === key;
       return {
         key, label: labels[key], num: String(i + 1).padStart(2, '0'),
         onClick: () => this.go(key),
-        style: { background: 'none', border: 'none', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: '7px', color: key === 'commit' ? ACCENT : (active ? '#0A0A0A' : '#6B6862'), borderBottom: active ? '2px solid ' + ACCENT : '2px solid transparent', transition: 'color 150ms ease' },
-        hoverStyle: { color: key === 'commit' ? ACCENT : '#0A0A0A' },
+        style: { background: 'none', border: 'none', padding: '8px 10px', display: 'flex', alignItems: 'center', gap: '7px', color: (key === 'commit' || key === 'kickoff') ? ACCENT : (active ? '#0A0A0A' : '#6B6862'), borderBottom: active ? '2px solid ' + ACCENT : '2px solid transparent', transition: 'color 150ms ease' },
+        hoverStyle: { color: (key === 'commit' || key === 'kickoff') ? ACCENT : '#0A0A0A' },
         numStyle: { fontFamily: MONO, fontSize: '10px', color: active ? ACCENT : '#C8C4BB' }
       };
     });
@@ -1659,9 +1929,42 @@ class Component extends DCLogic {
     ];
     const carryChips = carryData.map(([label, any]) => ({ label, color: any ? '#0A0A0A' : '#C8C4BB' }));
 
+    // ---- kickoff ----
+    const kickPrep = this.KICK_PREP.map((t) => ({ text: t }));
+    const kickDays = this.KICK_DAYS.map((d) => ({
+      num: d.num, title: d.title, tag: d.tag, hasTag: !!d.tag, out: d.out,
+      amHead: d.am.h, amItems: d.am.items.map((t) => ({ text: t })),
+      pmHead: d.pm.h, pmItems: d.pm.items.map((t) => ({ text: t })),
+      bg: d.tag ? '#F2F0EB' : '#fff'
+    }));
+    const kickSnaps = this.KICK_SNAPS.map((x) => ({
+      num: x.num, name: x.name, body: x.body, owner: x.owner,
+      bg: x.hot ? '#E6E3DC' : '#fff',
+      borderLeft: '3px solid ' + (x.hot ? ACCENT : 'transparent'),
+      numColor: x.hot ? ACCENT : '#C8C4BB',
+      isTrace: !!x.hot
+    }));
+    const kickRules = this.KICK_RULES.map((t) => ({ text: t }));
+    const kickDecisions = this.KICK_DECISIONS.map((d) => {
+      const r = (s.kickReact || {})[d.id] || {};
+      return {
+        num: d.num, title: d.title, body: d.body,
+        bg: r.s === 'lands' ? '#E6E3DC' : '#fff',
+        numColor: r.s === 'lands' ? ACCENT : '#C8C4BB',
+        c: ctl('kickReact', d.id, 'Adjust')
+      };
+    });
+    const kickNotOwned = this.KICK_NOT_OWNED.map((t) => ({ text: t }));
+    const kickReacted = this.KICK_DECISIONS.filter((d) => { const r = (s.kickReact || {})[d.id]; return r && (r.s || r.n); }).length;
+    const kickZones = [
+      { label: 'Arizona', hours: '6 to 9 am' },
+      { label: 'Pennsylvania', hours: '9 to noon' },
+      { label: 'Ireland', hours: '2 to 5 pm' }
+    ];
+
     // ---- record ----
     const entries = this.recordEntries();
-    const kindColors = { 'Listen affirmed': ACCENT, 'Listen corrected': '#0A0A0A', 'Listen added': '#0A0A0A', 'Frame affirmed': ACCENT, 'Frame note': '#0A0A0A', 'Frame added': '#0A0A0A', 'Crux affirmed': ACCENT, 'Crux note': '#0A0A0A', 'Crux added': '#0A0A0A', 'Envision affirmed': ACCENT, 'Envision note': '#0A0A0A', 'Envision added': '#0A0A0A', 'Call answer': ACCENT, 'Commit affirmed': ACCENT, 'Commit note': '#0A0A0A', 'Commit added': '#0A0A0A', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A', 'July readback': '#6B6862' };
+    const kindColors = { 'Decision affirmed': ACCENT, 'Decision adjusted': '#0A0A0A', 'Decision added': '#0A0A0A', 'Listen affirmed': ACCENT, 'Listen corrected': '#0A0A0A', 'Listen added': '#0A0A0A', 'Frame affirmed': ACCENT, 'Frame note': '#0A0A0A', 'Frame added': '#0A0A0A', 'Crux affirmed': ACCENT, 'Crux note': '#0A0A0A', 'Crux added': '#0A0A0A', 'Envision affirmed': ACCENT, 'Envision note': '#0A0A0A', 'Envision added': '#0A0A0A', 'Call answer': ACCENT, 'Commit affirmed': ACCENT, 'Commit note': '#0A0A0A', 'Commit added': '#0A0A0A', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A', 'July readback': '#6B6862' };
     const recordLines = entries.map((r) => ({ kind: r.kind, text: r.text, kindColor: kindColors[r.kind] || '#6B6862' }));
 
     // ---- cases ----
@@ -1685,6 +1988,14 @@ class Component extends DCLogic {
       goEngage: () => this.go('engage'),
       goListen: () => this.go('listen'), goFrame: () => this.go('frame'), goCrux: () => this.go('crux'),
       goEnvision: () => this.go('envision'), goCommit: () => this.go('commit'), goClose: () => this.go('close'),
+      goKickoff: () => this.go('kickoff'),
+      kickPrep, kickDays, kickSnaps, kickRules, kickDecisions, kickNotOwned, kickZones,
+      kickProgress: kickReacted + ' of ' + this.KICK_DECISIONS.length,
+      kickAddDraft: s.kickAddDraft,
+      onKickAddChange: (e) => this.setState({ kickAddDraft: e.target.value }),
+      onKickAdd: () => this.addTo('kickAdds', 'kickAddDraft'),
+      hasKickAdds: (s.kickAdds || []).length > 0,
+      kickAddsList: (s.kickAdds || []).map((t) => ({ text: t })),
       goBridge: () => this.go('bridge'), goEssay1: () => this.go('essay1'), goEssay2: () => this.go('essay2'),
       goBlueprint: () => this.go('envision'), goCases: () => this.go('cases'),
       goCasesLink: (e) => { e.preventDefault(); this.go('cases'); },
