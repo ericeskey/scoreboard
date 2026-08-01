@@ -41,6 +41,38 @@ One new spine page between Essay II and Close, rendering `uploads/straw_epr_agen
 - **Working session (2026-07-21):** a "Four questions we'll bring to the call" section sits between the KPI set and the page foot, so the blueprint doubles as the call's facilitation surface. Answers save via the same editor and record as `Blueprint answer`. Client-safe subset of the call-prep discovery questions; the buyer-qualification question (what Matt can decide vs. his sponsors) stays off the page on purpose. A same-day essentialism pass also removed duplicated framing: the banner's serif line, the "5 items · ~60 min" chip, the trend/tag sentence the legend already carries, and the repeated "destination" clause in the financial band.
 - **Invented strings:** kicker "The EPR blueprint · the sixth lock" · headline "The quarterly review, sketched to be argued with." · banner "A straw model / Strong enough to react to. Rough enough to change." · section heads "Built backward from three decisions," "One hour, quarterly. It ends in decisions.," "A scoreboard both sides of the house can read.," "Where this lands: dollars." · legend labels · controls "This lands / Affirmed / Not quite / Noted / Save note / Add to the record" · working session "The working session," "Four questions we'll bring to the call.," "Answer / Edit answer / Save answer," "Your answer · on the record" · counter "reacted" · placeholder "Add what this sketch missed."
 
+## 5b · v3 · Kickoff update (2026-08-01)
+
+Kickoff-only update per `uploads/claude_design_prompt_kickoff_v3_update.md`; all copy verbatim from `uploads/kickoff_page_v3_copy.md`. No other surface touched, no localStorage key change, reactions survive.
+
+- Header subline reframed around uncertainty reduction.
+- New quiet strip "What the three days are for" (`KICK_PURPOSE`, three numbered items) sits between the 01 heading row and "Before we arrive". Grammar borrowed from the ground-rules strip, but no border/fill so it reads quieter than the day cards.
+- Day 3 morning is now decisions-first, then the twelve; output line adds "any measures the original list missed."
+- Snapshot 08 (trace sample) ends with the honesty sentence about reporting the result as it lands.
+- Section 03 frame line carries the reverse direction (a decision no measure serves).
+- Footer now "v3 · August 2026"; archive links v1 · v2. `The Scoreboard Question v2.dc.html` is a byte copy of the pre-update build.
+
+## 5c · v3 · Kickoff UX pass (2026-08-01, Ladder critique)
+
+Applied after a simulated Drawbackwards/Ladder review of the Kickoff surface. Kickoff only; no other surface, no key change.
+
+- "What the three days are for" promoted to full card weight (1px ink border, white fill, accent eyebrow, lead lines as h4) and moved above the day cards; the "Before we arrive" checklist moved below the day cards and the travel footnotes.
+- Snapshot status chips are now real three-state controls (Requested / In flight / Received, click again to clear). New state `kickSnapStatus`, method `setSnapStatus`, record kind `Snapshot status`.
+- Day cards gained the standard reaction pair ("This lands / Not quite" plus the shared note editor). New state `kickDayReact`, record kinds `Day affirmed` / `Day adjusted`.
+- Reply instruction added under the header subline for the forwarded reader: "What a reply looks like: mark what is wrong on this page, in one reply, before the Thursday call. Anything left unmarked, we build on."
+- Section 04's "Built once" card removed; the window and the loop remain.
+- No `defaults().v` bump, so returning visitors keep everything; the new keys default in via `Object.assign`.
+
+## 5d · v3 · Kickoff, measurement-discipline pass (2026-08-01)
+
+Three sentences added after checking the page against the HTMA general framework (define decision and variables · model uncertainty · value the measurement · measure the high-value uncertainties · decide · repeat) and `uploads/dhw_htma_orchestrator_flow.md`.
+
+- Day 2 afternoon, first item: the room agrees the decision threshold before the first trace, so the trace result decides something.
+- Day 3 morning, new final item: unsure reachability is recorded as a spread, not a verdict.
+- Section 04 "The loop" card: an explicit stopping rule, phrased without probability language.
+
+Deliberately still absent from this surface, and correctly so: calibrated estimates, any computed information value, and the risk/return boundary. The page's hard rules ban the probability vocabulary those steps are made of, so the Kickoff can be HTMA-shaped in sequence but not HTMA-complete in public.
+
 ## 6 · Mechanics
 
 - State (affirmations, corrections, additions, expansions, essay flags, case flags, current surface) persists in `localStorage`; "Reset session" clears it.

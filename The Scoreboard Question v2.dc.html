@@ -869,8 +869,7 @@
         <div style="max-width:64ch;">
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#D64A1F;">Kickoff · the working surface</span>
           <h2 style="font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.05;letter-spacing:-0.025em;margin:16px 0 0;">The plan for the first three days, what we need in hand, and the decisions the room owns.</h2>
-          <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:64ch;">Proposed: the week of August 10, at the command center in Ireland. Three days, spent where they reduce the most uncertainty: each session exists to answer a question we cannot answer from here. It is a draft to be corrected.</p>
-          <p style="font-size:14px;line-height:1.55;color:#6B6862;margin:12px 0 0;max-width:64ch;border-left:2px solid #C8C4BB;padding-left:14px;">What a reply looks like: mark what is wrong on this page, in one reply. Tuesday's review is the deadline that matters, so anything you can mark before it goes into the version you walk in with. Anything left unmarked, we build on.</p>
+          <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:64ch;">Proposed: the week of August 10, at the command center in Ireland. This page is logistics with reasons. It is a draft to be corrected, and the correction is the point.</p>
         </div>
         <div style="text-align:right;flex-shrink:0;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#0A0A0A;">{{ kickProgress }}</div>
@@ -885,14 +884,13 @@
           <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;">Week of August 10 · the command center, Ireland</span>
         </div>
 
-        <div style="margin-top:24px;border:1px solid #0A0A0A;background:#fff;padding:26px;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D64A1F;">What the three days are for</span>
-          <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px 32px;">
-            <sc-for list="{{ kickPurpose }}" as="q" hint-placeholder-count="3">
-              <div style="border-top:1px solid #0A0A0A;padding-top:12px;">
-                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B6862;">{{ q.n }}</span>
-                <h4 style="font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.015em;margin:6px 0 0;">{{ q.lead }}</h4>
-                <p style="font-size:14px;line-height:1.55;color:#4A4A4A;margin:8px 0 0;">{{ q.text }}</p>
+        <div style="margin-top:24px;border:1px solid #C8C4BB;background:#E6E3DC;padding:22px;max-width:820px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Before we arrive</span>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ kickPrep }}" as="p" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span style="width:11px;height:11px;border:1px solid #0A0A0A;flex-shrink:0;margin-top:6px;"></span>
+                <p style="font-size:15px;line-height:1.55;color:#0A0A0A;margin:0;max-width:62ch;">{{ p.text }}</p>
               </div>
             </sc-for>
           </div>
@@ -910,7 +908,6 @@
                   <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:3px 8px;">{{ d.tag }}</span>
                 </sc-if>
               </div>
-              <p style="font-size:14.5px;line-height:1.55;color:#4A4A4A;margin:-8px 0 0;">{{ d.gist }}</p>
               <div style="border-top:1px solid #C8C4BB;padding-top:14px;">
                 <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">{{ d.amHead }}</span>
                 <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
@@ -931,43 +928,14 @@
                 <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#D64A1F;">What comes out</span>
                 <p style="font-family:'Instrument Serif',Georgia,serif;font-size:17px;line-height:1.4;color:#0A0A0A;margin:6px 0 0;">{{ d.out }}</p>
               </div>
-              <sc-if value="{{ d.c.showNote }}" hint-placeholder-val="{{ false }}">
-                <div style="border-left:2px solid #0A0A0A;padding-left:12px;">
-                  <p style="font-size:13.5px;line-height:1.5;color:#0A0A0A;margin:0;">{{ d.c.note }}</p>
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;margin:5px 0 0;">Your correction · on the record</p>
-                </div>
-              </sc-if>
-              <sc-if value="{{ d.c.editing }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:8px;">
-                  <textarea value="{{ noteDraft }}" onChange="{{ onNoteChange }}" rows="3" style="width:100%;border:1px solid #0A0A0A;background:#fff;padding:10px;font-size:13.5px;line-height:1.5;color:#0A0A0A;resize:vertical;"></textarea>
-                  <div style="display:flex;gap:8px;">
-                    <button onClick="{{ onNoteSave }}" style="background:#0A0A0A;color:#F2F0EB;border:none;padding:7px 14px;font-size:12.5px;">Save</button>
-                    <button onClick="{{ onNoteCancel }}" style="background:none;border:1px solid #C8C4BB;color:#4A4A4A;padding:7px 14px;font-size:12.5px;">Cancel</button>
-                  </div>
-                </div>
-              </sc-if>
-              <div style="display:flex;gap:8px;border-top:1px solid #C8C4BB;padding-top:12px;flex-wrap:wrap;">
-                <button onClick="{{ d.c.onAffirm }}" style="{{ d.c.affirmStyle }}" style-hover="{{ d.c.affirmHover }}">{{ d.c.affirmLabel }}</button>
-                <button onClick="{{ d.c.onNote }}" style="{{ d.c.noteStyle }}" style-hover="{{ d.c.noteHover }}">{{ d.c.noteLabel }}</button>
-              </div>
             </article>
           </sc-for>
         </div>
 
         <div style="margin-top:20px;display:flex;gap:12px 32px;flex-wrap:wrap;font-size:13px;line-height:1.55;color:#6B6862;max-width:980px;">
+          <span>Travel per the statement of work: pre-approved, passed through at cost.</span>
           <span>If day 3 cannot hold, its content becomes the first two remote working sessions. Days 1 and 2 are the essential core.</span>
-        </div>
-
-        <div style="margin-top:28px;border:1px solid #C8C4BB;background:#E6E3DC;padding:22px;max-width:820px;">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Before we arrive</span>
-          <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
-            <sc-for list="{{ kickPrep }}" as="p" hint-placeholder-count="3">
-              <div style="display:flex;gap:12px;align-items:flex-start;">
-                <span style="width:11px;height:11px;border:1px solid #0A0A0A;flex-shrink:0;margin-top:6px;"></span>
-                <p style="font-size:15px;line-height:1.55;color:#0A0A0A;margin:0;max-width:62ch;">{{ p.text }}</p>
-              </div>
-            </sc-for>
-          </div>
+          <span>Evenings unscheduled. Travel days protected.</span>
         </div>
       </section>
 
@@ -976,7 +944,7 @@
           <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">02</span>
           <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">What we need in hand</h3>
         </div>
-        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:16px 0 0;max-width:66ch;">Everything Phase 1 needs as one-time extracts. No cleanup, no formatting, no builds. Extracts in hand before Ireland means the kickoff is spent confirming what fields mean, not waiting on exports. As-is beats cleaned-up: blank fields and stale dates are findings, not embarrassments, and anything that cannot be extracted is useful to know early. Everything is handled under the confidentiality terms in place, returned or destroyed at engagement end, at Teleflex’s direction.</p>
+        <p style="font-size:16px;line-height:1.6;color:#4A4A4A;margin:16px 0 0;max-width:66ch;">Everything Phase 1 needs as one-time extracts. No cleanup, no formatting, no builds. Extracts in hand before Ireland means the kickoff is spent confirming what fields mean, not waiting on exports.</p>
 
         <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
           <sc-for list="{{ kickSnaps }}" as="k" hint-placeholder-count="8">
@@ -992,15 +960,23 @@
               <div style="margin-top:auto;border-top:1px solid #C8C4BB;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
                 <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.04em;color:#6B6862;">{{ k.owner }}</span>
                 <span style="display:flex;gap:5px;">
-                  <sc-for list="{{ k.statuses }}" as="t" hint-placeholder-count="3">
-                    <button onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="{{ t.hoverStyle }}">{{ t.label }}</button>
-                  </sc-for>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">Requested</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">In flight</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;border:1px solid #C8C4BB;color:#6B6862;padding:2px 6px;">Received</span>
                 </span>
               </div>
             </article>
           </sc-for>
         </div>
 
+        <div style="margin-top:24px;border:1px solid #0A0A0A;background:#E6E3DC;padding:24px;max-width:980px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">Ground rules</span>
+          <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px;">
+            <sc-for list="{{ kickRules }}" as="r" hint-placeholder-count="4">
+              <p style="font-size:14px;line-height:1.55;color:#0A0A0A;margin:0;border-top:1px solid #C8C4BB;padding-top:10px;">{{ r.text }}</p>
+            </sc-for>
+          </div>
+        </div>
       </section>
 
       <section style="margin-top:72px;">
@@ -1009,7 +985,7 @@
           <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">The decisions the room owns</h3>
           <span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid #D64A1F;color:#D64A1F;padding:3px 9px;">Draft, for correction</span>
         </div>
-        <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:66ch;">Draft, for correction. This list is the yardstick for every measure: a measure that would not change any of these decisions is out, no matter how good its data. And it works in reverse: a decision on this list that no measure serves tells us what the candidate list still owes you.</p>
+        <p style="font-size:17px;line-height:1.6;color:#0A0A0A;margin:16px 0 0;max-width:66ch;">Draft, for correction. Every candidate measure gets mapped against this list: a measure that would not change any of these decisions is out, no matter how good its data.</p>
 
         <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;">
           <sc-for list="{{ kickDecisions }}" as="d" hint-placeholder-count="8">
@@ -1072,7 +1048,7 @@
       <section style="margin-top:72px;">
         <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #0A0A0A;padding-bottom:12px;">
           <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6B6862;">04</span>
-          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">How we work after Ireland</h3>
+          <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.015em;line-height:1.25;margin:0;">How we’ll work</h3>
         </div>
 
         <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
@@ -1095,9 +1071,12 @@
               <span>Snapshot</span><span style="color:#C8C4BB;">→</span><span>Mockup</span><span style="color:#C8C4BB;">→</span><span>React</span><span style="color:#C8C4BB;">→</span><span>Adjust</span>
             </div>
             <p style="font-size:14px;line-height:1.55;color:#4A4A4A;margin:0;">One structured feedback cycle per the statement of work. A weekly working session: 60 minutes in the early weeks, settling to 30.</p>
-            <p style="font-size:14px;line-height:1.55;color:#4A4A4A;margin:0;border-top:1px solid #C8C4BB;padding-top:12px;">The loop keeps turning only while the next answer would still change a decision. When it stops changing decisions, we stop digging and build.</p>
           </article>
 
+          <article style="border:1px solid #0A0A0A;background:#E6E3DC;padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <h4 style="font-size:17px;font-weight:700;line-height:1.3;letter-spacing:-0.012em;margin:0;">Built once</h4>
+            <p style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.4;color:#0A0A0A;margin:0;">Discovery runs on snapshots so that what gets built at the end gets built once, from a confirmed baseline.</p>
+          </article>
         </div>
       </section>
     </main>
@@ -1309,8 +1288,8 @@
   <footer data-print="hide" style="border-top:1px solid #0A0A0A;">
     <div style="max-width:1180px;margin:0 auto;padding:24px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
       <div style="display:flex;gap:6px 28px;flex-wrap:wrap;align-items:baseline;border-left:3px solid #D64A1F;padding:4px 0 4px 16px;">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">v3 · August 2026 · Dark Horse Works · Demand Discovery</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:#6B6862;">Earlier versions: <a href="The Scoreboard Question v1.dc.html" style="color:#D64A1F;text-decoration:underline;text-underline-offset:3px;">v1</a> · <a href="The Scoreboard Question v2.dc.html" style="color:#D64A1F;text-decoration:underline;text-underline-offset:3px;">v2</a></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#6B6862;">v2 · July 2026 · Dark Horse Works · Demand Discovery</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:#6B6862;">Earlier versions: <a href="The Scoreboard Question v1.dc.html" style="color:#D64A1F;text-decoration:underline;text-underline-offset:3px;">v1</a></span>
       </div>
       <button onClick="{{ onReset }}" style="background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#6B6862;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#0A0A0A;">Reset session</button>
     </div>
@@ -1325,17 +1304,13 @@ class Component extends DCLogic {
 
   KICK_PREP = [
     'Snapshot requests issued as soon as we have a go; extracts in hand or in flight by travel day.',
+    'Decision inventory corrected by Matt on the Thursday call.',
     'The 20-project trace sample list agreed: Matt picks a mix of BUs, sizes, and ages.'
   ];
-  KICK_PURPOSE = [
-    { n: '1', lead: 'The financial path, tested.', text: 'Twenty projects hand-traced to SAP. Whatever fraction traces cleanly is the honest baseline, and today nobody knows that number. It could be 3 in 10 or 7 in 10. By the evening of Day 2 it stops being a guess.' },
-    { n: '2', lead: 'Definitions, confirmed at the source.', text: 'Even the best BU dashboard\u2019s own pages disagree with each other until definitions are written down. One session with the people who fill the fields moves every measure on the candidate list at once.' },
-    { n: '3', lead: 'The measures the decisions actually need.', text: 'Before the candidate list is opened, the room asks the reverse question: for each decision this forum owns, what would leaders need to see to decide it significantly better? Measures the list missed get named. Measures that serve no decision get retired, no matter how good their data.' }
-  ];
   KICK_DAYS = [
-    { id: 'd1', num: 'Day 1', title: 'Terrain', gist: 'Learn how the room runs today, and how a project\u2019s record travels from the tracking tool to the dashboard leaders read.', tag: '', am: { h: 'Morning: orientation and decision frame', items: ['Command center walkthrough: how the room works, what it produces, for whom.', 'Working session, Matt and Eric: decision inventory final pass, and what the first quarterly must be able to decide.'] }, pm: { h: 'Afternoon: terrain sessions with the PBI developer', items: ['The systems walk: the life of a project record, how Planview is structured, and the path data takes into the Interventional dashboard.', 'Live checks against extracts already received.'] }, out: 'Systems map v0, and the trust foundation with the person who will build against our baseline.' },
-    { id: 'd2', num: 'Day 2', title: 'Snapshots at the source', gist: 'Collect the remaining data with the people who own it in the room, agree what each field means, then follow twenty real projects from record to dollars to see how far the trail holds.', tag: '', am: { h: 'Morning: extraction and semantics', items: ['Remaining snapshots pulled together, at the source, owners in the room.', 'Definition confirmation per field that matters: what it means, who fills it, when.'] }, pm: { h: 'Afternoon: the 20-project trace', items: ['Hand-trace projects end to end: record, impacted SKU, part number, SAP. Time each step, note each judgment call.', 'Before the first trace, the room agrees what result sends us down which road, so the finding decides something instead of merely being interesting.', 'The financial path tested with evidence. Whatever fraction traces cleanly is the honest baseline.'] }, out: 'Snapshot set complete and confirmed, trace-sample results, and the raw material of reachability map v1.' },
-    { id: 'd3', num: 'Day 3', title: 'First-pass mapping', gist: 'Work out which measures the quarterly review actually needs, then check the twelve already on the candidate list against what the data can support today.', tag: 'Optional but recommended', am: { h: 'Morning: measures from decisions, then the twelve', items: ['Decisions first: for each decision the room owns, what would leaders need to see to decide it significantly better? Candidate measures captured before the existing list is opened.', 'Then the rapid pass: the twelve, plus anything just named, against the terrain: reachable now, reachable with a defined step, or blocked and why, with the PBI developer\u2019s read live.', 'Mapping: which measures inform which decisions. Decisions left underserved get flagged, not papered over.', 'Where the room is unsure how reachable a measure is, that gets recorded as a spread rather than a verdict, and the spread is what the next step works on.'] }, pm: { h: 'Afternoon: close-out', items: ['What we saw, what surprised us, what the mockup will show first.', 'Working rhythm confirmed on the standing three-way window.'] }, out: 'Reachability map skeleton, mockup v1 direction, any measures the original list missed, and every week-1 output either done or in motion, days early.' }
+    { id: 'd1', num: 'Day 1', title: 'Terrain', tag: '', am: { h: 'Morning: orientation and decision frame', items: ['Command center walkthrough: how the room works, what it produces, for whom.', 'Working session, Matt and Eric: decision inventory final pass, and what the first quarterly must be able to decide.'] }, pm: { h: 'Afternoon: terrain sessions with the PBI developer', items: ['The systems walk: project record lifecycle, Planview anatomy, the INTV dashboard\u2019s data path.', 'Live checks against extracts already received.'] }, out: 'Systems map v0, and the trust foundation with the person who will build against our baseline.' },
+    { id: 'd2', num: 'Day 2', title: 'Snapshots at the source', tag: '', am: { h: 'Morning: extraction and semantics', items: ['Remaining snapshots pulled together, at the source, owners in the room.', 'Definition confirmation per field that matters: what it means, who fills it, when.'] }, pm: { h: 'Afternoon: the 20-project trace', items: ['Hand-trace projects end to end: record, impacted SKU, part number, SAP. Time each step, note each judgment call.', 'The financial path tested with evidence. Whatever fraction traces cleanly is the honest baseline.'] }, out: 'Snapshot set complete and confirmed, trace-sample results, and the raw material of reachability map v1.' },
+    { id: 'd3', num: 'Day 3', title: 'First-pass mapping', tag: 'Optional but recommended', am: { h: 'Morning: the twelve candidates against the terrain', items: ['Rapid pass per candidate: reachable now, reachable with a defined step, or blocked and why, with the PBI developer\u2019s read live.', 'Decision-inventory mapping started: which candidates inform which decisions.'] }, pm: { h: 'Afternoon: close-out', items: ['What we saw, what surprised us, what the mockup will show first.', 'Working rhythm confirmed on the standing three-way window.'] }, out: 'Reachability map skeleton, mockup v1 direction, and every week-1 output either done or in motion, days early.' }
   ];
   KICK_SNAPS = [
     { id: 's1', num: '01', name: 'Planview extract, Interventional', body: 'All active and recently closed sustaining projects, all fields, as exported. Excel or CSV.', owner: 'Command center or the PBI developer' },
@@ -1345,7 +1320,7 @@ class Component extends DCLogic {
     { id: 's5', num: '05', name: 'Anesthesia and Emergency Medicine project list', body: 'The remaining RemainCo BU, same shape.', owner: 'BU portfolio contact' },
     { id: 's6', num: '06', name: 'Intake records', body: 'A recent sample of intake requests, however they arrive, ideally three months\u2019 worth.', owner: 'Matt\u2019s team' },
     { id: 's7', num: '07', name: 'Survey results', body: 'Both waves, full responses. Partially in hand; confirm the complete set.', owner: 'Matt\u2019s team' },
-    { id: 's8', num: '08', hot: true, name: 'The 20-project trace sample', body: 'Nothing to export: a list of 20 recent sustaining projects, mixed BUs and sizes, hand-traced from project record to impacted SKU to part number to SAP during the kickoff, with the people who know the systems in the room. This is how the financial path gets tested with evidence instead of opinion. We commit to reporting the result as it lands, with its honest range. A low clean-trace rate is not a failure; it is the size of the build, measured.', owner: 'Matt selects' }
+    { id: 's8', num: '08', hot: true, name: 'The 20-project trace sample', body: 'Nothing to export: a list of 20 recent sustaining projects, mixed BUs and sizes, hand-traced from project record to impacted SKU to part number to SAP during the kickoff, with the people who know the systems in the room. This is how the financial path gets tested with evidence instead of opinion.', owner: 'Matt selects' }
   ];
   KICK_RULES = [
     'One-time snapshots, not feeds. Nothing recurring, nothing built.',
@@ -1535,7 +1510,6 @@ class Component extends DCLogic {
       envReact: {},
       commitReact: {}, commitAdds: [], commitAddDraft: '',
       kickReact: {}, kickAdds: [], kickAddDraft: '',
-      kickDayReact: {}, kickSnapStatus: {},
       exp: {},
       editId: null, editDraft: '', noteId: null, noteDraft: ''
     };
@@ -1557,14 +1531,6 @@ class Component extends DCLogic {
   componentWillUnmount() { window.removeEventListener('keydown', this._onKey); clearTimeout(this._adv); }
 
   go(surface) { this.update(() => ({ surface })); window.scrollTo(0, 0); }
-
-  setSnapStatus(id, label) {
-    this.update((s) => {
-      const m = Object.assign({}, s.kickSnapStatus);
-      if (m[id] === label) delete m[id]; else m[id] = label;
-      return { kickSnapStatus: m };
-    });
-  }
 
   // ---- generic reactions ----
   rToggle(name, id) {
@@ -1710,15 +1676,6 @@ class Component extends DCLogic {
       if (r.n) push('Decision adjusted', d.num + ' \u00b7 ' + d.title + ' \u00b7 \u201c' + r.n + '\u201d');
     });
     (s.kickAdds || []).forEach((t) => push('Decision added', t));
-    this.KICK_DAYS.forEach((d) => {
-      const r = rm('kickDayReact')[d.id] || {};
-      if (r.s === 'lands') push('Day affirmed', d.num + ' \u00b7 ' + d.title);
-      if (r.n) push('Day adjusted', d.num + ' \u00b7 ' + d.title + ' \u00b7 \u201c' + r.n + '\u201d');
-    });
-    this.KICK_SNAPS.forEach((x) => {
-      const st = rm('kickSnapStatus')[x.id];
-      if (st) push('Snapshot status', x.num + ' \u00b7 ' + x.name + ' \u00b7 ' + st);
-    });
     this.COMMITS.forEach((c) => {
       const r = rm('commitReact')[c.id] || {};
       if (r.s === 'lands') push('Commit affirmed', c.title);
@@ -1974,30 +1931,20 @@ class Component extends DCLogic {
 
     // ---- kickoff ----
     const kickPrep = this.KICK_PREP.map((t) => ({ text: t }));
-    const kickPurpose = this.KICK_PURPOSE;
     const kickDays = this.KICK_DAYS.map((d) => ({
-      num: d.num, title: d.title, gist: d.gist, tag: d.tag, hasTag: !!d.tag, out: d.out,
+      num: d.num, title: d.title, tag: d.tag, hasTag: !!d.tag, out: d.out,
       amHead: d.am.h, amItems: d.am.items.map((t) => ({ text: t })),
       pmHead: d.pm.h, pmItems: d.pm.items.map((t) => ({ text: t })),
-      bg: d.tag ? '#F2F0EB' : '#fff',
-      c: ctl('kickDayReact', d.id, 'Not quite')
+      bg: d.tag ? '#F2F0EB' : '#fff'
     }));
     const kickSnaps = this.KICK_SNAPS.map((x) => ({
       num: x.num, name: x.name, body: x.body, owner: x.owner,
       bg: x.hot ? '#E6E3DC' : '#fff',
       borderLeft: '3px solid ' + (x.hot ? ACCENT : 'transparent'),
       numColor: x.hot ? ACCENT : '#C8C4BB',
-      isTrace: !!x.hot,
-      statuses: ['Requested', 'In flight', 'Received'].map((label) => {
-        const on = ((s.kickSnapStatus || {})[x.id]) === label;
-        return {
-          label,
-          onClick: () => this.setSnapStatus(x.id, label),
-          style: { background: on ? '#0A0A0A' : 'none', color: on ? '#F2F0EB' : '#6B6862', border: '1px solid ' + (on ? '#0A0A0A' : '#C8C4BB'), padding: '3px 7px', fontSize: '9.5px', fontFamily: MONO, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer', whiteSpace: 'nowrap' },
-          hoverStyle: on ? { background: '#1A1A1A' } : ghostHover
-        };
-      })
+      isTrace: !!x.hot
     }));
+    const kickRules = this.KICK_RULES.map((t) => ({ text: t }));
     const kickDecisions = this.KICK_DECISIONS.map((d) => {
       const r = (s.kickReact || {})[d.id] || {};
       return {
@@ -2017,7 +1964,7 @@ class Component extends DCLogic {
 
     // ---- record ----
     const entries = this.recordEntries();
-    const kindColors = { 'Decision affirmed': ACCENT, 'Decision adjusted': '#0A0A0A', 'Decision added': '#0A0A0A', 'Day affirmed': ACCENT, 'Day adjusted': '#0A0A0A', 'Snapshot status': '#0A0A0A', 'Listen affirmed': ACCENT, 'Listen corrected': '#0A0A0A', 'Listen added': '#0A0A0A', 'Frame affirmed': ACCENT, 'Frame note': '#0A0A0A', 'Frame added': '#0A0A0A', 'Crux affirmed': ACCENT, 'Crux note': '#0A0A0A', 'Crux added': '#0A0A0A', 'Envision affirmed': ACCENT, 'Envision note': '#0A0A0A', 'Envision added': '#0A0A0A', 'Call answer': ACCENT, 'Commit affirmed': ACCENT, 'Commit note': '#0A0A0A', 'Commit added': '#0A0A0A', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A', 'July readback': '#6B6862' };
+    const kindColors = { 'Decision affirmed': ACCENT, 'Decision adjusted': '#0A0A0A', 'Decision added': '#0A0A0A', 'Listen affirmed': ACCENT, 'Listen corrected': '#0A0A0A', 'Listen added': '#0A0A0A', 'Frame affirmed': ACCENT, 'Frame note': '#0A0A0A', 'Frame added': '#0A0A0A', 'Crux affirmed': ACCENT, 'Crux note': '#0A0A0A', 'Crux added': '#0A0A0A', 'Envision affirmed': ACCENT, 'Envision note': '#0A0A0A', 'Envision added': '#0A0A0A', 'Call answer': ACCENT, 'Commit affirmed': ACCENT, 'Commit note': '#0A0A0A', 'Commit added': '#0A0A0A', 'Essay I flag': ACCENT, 'Essay II flag': ACCENT, 'Case flag': '#0A0A0A', 'July readback': '#6B6862' };
     const recordLines = entries.map((r) => ({ kind: r.kind, text: r.text, kindColor: kindColors[r.kind] || '#6B6862' }));
 
     // ---- cases ----
@@ -2042,7 +1989,7 @@ class Component extends DCLogic {
       goListen: () => this.go('listen'), goFrame: () => this.go('frame'), goCrux: () => this.go('crux'),
       goEnvision: () => this.go('envision'), goCommit: () => this.go('commit'), goClose: () => this.go('close'),
       goKickoff: () => this.go('kickoff'),
-      kickPrep, kickPurpose, kickDays, kickSnaps, kickDecisions, kickNotOwned, kickZones,
+      kickPrep, kickDays, kickSnaps, kickRules, kickDecisions, kickNotOwned, kickZones,
       kickProgress: kickReacted + ' of ' + this.KICK_DECISIONS.length,
       kickAddDraft: s.kickAddDraft,
       onKickAddChange: (e) => this.setState({ kickAddDraft: e.target.value }),
