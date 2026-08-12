@@ -73,6 +73,17 @@ Three sentences added after checking the page against the HTMA general framework
 
 Deliberately still absent from this surface, and correctly so: calibrated estimates, any computed information value, and the risk/return boundary. The page's hard rules ban the probability vocabulary those steps are made of, so the Kickoff can be HTMA-shaped in sequence but not HTMA-complete in public.
 
+## 7 · The Outcome First (three-page document, added 2026-08-04)
+
+`The Outcome First.dc.html` — a `<doc-page>` document, three explicitly paginated letter pages, built for Matt to use with Harsh. Not part of the site; no shared state, no localStorage. `The Outcome First v1.dc.html` preserves the pre-Ladder build.
+
+- **Page 1 · the outcome.** Cold-opens on the paused report; the outcome sentence is a bordered proposition card with the "correct this sentence" invitation attached inside it. Data and presentation demoted to a two-column footing.
+- **Page 2 · the eight decisions.** From `uploads/20_decision_inventory.md`. Each card carries a "Today:" line naming where the decision gets settled now; 01, 03, 05 are ink-inverted as the three with evidence that nothing settles them. Those "today" readings are **invented for this document** and flagged on the page as our reading.
+- **Page 3 · the twelve measures.** From `uploads/straw_epr_agenda_kpi.md`. Table of candidate / decision it would change / Now-Step-Build. **The decision mappings are invented** (the source md maps domains to Matt's three decisions, not to the eight). Headline states the 4/4/4 count. Domain D gets a two-step dollars commitment; an open dashed row invites Harsh's own measures.
+- Each page's callout is deliberately different: correct this sentence / correct this list / add to this table. Footer strip names all three pages, current one in ink.
+- **Register differs from the site on purpose:** Harsh is named, and Interventional and the financial system are named. If this travels beyond Matt's desk, revisit.
+- All three pages fit their letter page box with room to spare; re-measure `scrollHeight` after any copy addition.
+
 ## 6 · Mechanics
 
 - State (affirmations, corrections, additions, expansions, essay flags, case flags, current surface) persists in `localStorage`; "Reset session" clears it.
